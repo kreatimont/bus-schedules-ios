@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0567E00F1E901703008F725E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0567E00E1E901703008F725E /* NetworkManager.swift */; };
 		840FA6331E8942F200B8A80E /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA6321E8942F200B8A80E /* ScheduleCell.swift */; };
 		841EB8F61E841EEE007AE710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EB8F51E841EEE007AE710 /* AppDelegate.swift */; };
 		841EB8FB1E841EEF007AE710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841EB8F91E841EEF007AE710 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0567E00E1E901703008F725E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		30153C863FA09129DCCE900A /* Pods-bus schedule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bus schedule.release.xcconfig"; path = "Pods/Target Support Files/Pods-bus schedule/Pods-bus schedule.release.xcconfig"; sourceTree = "<group>"; };
 		6AE99E278E630BED643C62B7 /* Pods-bus schedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bus schedule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bus schedule/Pods-bus schedule.debug.xcconfig"; sourceTree = "<group>"; };
 		840FA6321E8942F200B8A80E /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0567E00D1E9016E7008F725E /* network */ = {
+			isa = PBXGroup;
+			children = (
+				0567E00E1E901703008F725E /* NetworkManager.swift */,
+			);
+			name = network;
+			sourceTree = "<group>";
+		};
 		682FB63587385967A0BB98BC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +73,7 @@
 		841EB8E91E841EED007AE710 = {
 			isa = PBXGroup;
 			children = (
+				0567E00D1E9016E7008F725E /* network */,
 				84F95CB01E8D550D00658A7F /* controllers */,
 				84F95CA71E8D540B00658A7F /* model */,
 				841EB8F41E841EEE007AE710 /* bus_schedule */,
@@ -251,6 +262,7 @@
 				84FE585D1E8BB48F007B300F /* DateHelper.swift in Sources */,
 				84F95CC01E8D59BA00658A7F /* DetailedViewController.swift in Sources */,
 				84F95CC11E8D59BA00658A7F /* SetDateViewController.swift in Sources */,
+				0567E00F1E901703008F725E /* NetworkManager.swift in Sources */,
 				84F95CC21E8D59BA00658A7F /* ViewController.swift in Sources */,
 				841EB8F61E841EEE007AE710 /* AppDelegate.swift in Sources */,
 				840FA6331E8942F200B8A80E /* ScheduleCell.swift in Sources */,

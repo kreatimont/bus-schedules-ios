@@ -10,9 +10,9 @@ import UIKit
 import AFNetworking
 import CoreData
 
-extension Notification.Name {
-    static let reload = Notification.Name("reload")
-}
+//extension Notification.Name {
+//    static let reload = Notification.Name("reload")
+//}
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -25,44 +25,47 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var dataArray: [ScheduleItem] = []
     let cellId = "scheduleCell"
 
-    var refreshControl: UIRefreshControl!
-    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //for mergin data in core data
+        //for merging data in core data
         self.context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         
         //implement tableView
         tableView.delegate = self
         tableView.dataSource = self
         
-    
         retrieveDataFromDb()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableData(_:)), name: .reload, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.reloadTableData(_:)),
+                                               name: NSNotification.Name(rawValue: "reload"),
+                                               object: nil)
         
          //FIXME: refresh control
-        
-//        refreshControl = UIRefreshControl()
-//        refreshControl.attributedTitle = NSAttributedString(string: "Loading..")
-//        refreshControl.addTarget(self, action: Selector(("refresh:")), for: UIControlEvents.valueChanged)
-//        tableView.addSubview(refreshControl)
+        self.tableView.addSubview(self.refreshControl)
         
     }
     
-    func refresh(sender:AnyObject) {
-        refreshBegin(newtext: "Refresh",
-                     refreshEnd: {(x:Int) -> () in
-                        self.tableView.reloadData()
-                        self.refreshControl.endRefreshing()
-        })
-    }
-    
-    func refreshBegin(newtext: String, refreshEnd:(Int) -> ()) {
-        DispatchQueue.global(qos: .background).async {
-            
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        // Do some reloading of data and update the table view's data source
+        // Fetch more objects from a web service, for example...
+        
+        NetworkManager.getInstance().loadData(array: dataArray)
+        
+        dataArray.sort { (itemOne, itemTwo) -> Bool in
+            return ((itemOne.from_date?.compare(itemTwo.from_date as! Date))?.rawValue)! > 0
         }
+        
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
     }
     
     func updateViews() {
@@ -88,40 +91,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK: Core Data
     
     func clearDb() {
-        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ScheduleItem")
-        
         let result = try? context.fetch(fetchRequest)
-        
         for object in result! {
             context.delete(object as! NSManagedObject)
         }
-        
-        print("Deleted items(schedule item): \(result?.count)")
-        
+        print("\(result?.count) (ScheduleItem) items to delete")
         
         let fetchRequestCity = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
-        
         let resultCity = try? context.fetch(fetchRequestCity)
-        
         for object in resultCity! {
             context.delete(object as! NSManagedObject)
         }
-        
+        print("\(resultCity?.count) (ScheduleItem) items to delete")
         do {
             try context.save()
-        } catch {
-            
+        } catch let error as NSError {
+            print("Database was not cleared, error: \(error)")
         }
-        
-        print("Deleted items(city): \(resultCity?.count)")
-        
+    
         retrieveDataFromDb()
     }
     
     func retrieveDataFromDb() {
         do {
-            let fetch:NSFetchRequest = ScheduleItem.fetchRequest()
+            let fetch: NSFetchRequest = ScheduleItem.fetchRequest()
             let sortDescriptor = NSSortDescriptor(key: "from_date", ascending: true)
             fetch.sortDescriptors = [sortDescriptor]
             dataArray.removeAll()
@@ -141,6 +135,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var numOfSection: Int = 0
         
         if dataArray.count == 0 {
+            //MARK: empty stub
             let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text = "No data available"
             noDataLabel.textColor = UIColor.black

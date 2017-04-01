@@ -87,7 +87,7 @@ class SetDateViewController: UIViewController {
                             self.parseJson(data: responseData["data"] as! NSArray)
                         }
                     
-                       NotificationCenter.default.post(name: .reload, object: nil)
+                       NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
                        _ = self.navigationController?.popToRootViewController(animated: true)
                         
         }, failure: { (operation, Error) in
