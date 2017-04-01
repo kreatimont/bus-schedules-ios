@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="City" representedClassName=".City" syncable="YES" codeGenerationType="class">
+        <attribute name="highlight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="schedule_from" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ScheduleItem" inverseName="from_city" inverseEntity="ScheduleItem" syncable="YES"/>
+        <relationship name="schedule_to" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ScheduleItem" inverseName="to_city" inverseEntity="ScheduleItem" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="ScheduleItem" representedClassName=".ScheduleItem" syncable="YES" codeGenerationType="class">
+        <attribute name="from_date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="from_info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="from_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="to_date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="to_info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="to_time" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="from_city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="schedule_from" inverseEntity="City" syncable="YES"/>
+        <relationship name="to_city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="schedule_to" inverseEntity="City" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="City" positionX="-54" positionY="54" width="108" height="105"/>
+        <element name="ScheduleItem" positionX="-308" positionY="-42" width="128" height="210"/>
+    </elements>
+</model>
