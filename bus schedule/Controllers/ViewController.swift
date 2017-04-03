@@ -16,9 +16,12 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var enteredFromDate: UITextField!
-    @IBOutlet weak var enteredToDate: UITextField!
+    @IBOutlet weak var labelTo: UILabel!
+    @IBOutlet weak var labelFrom: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dateFrom: UILabel!
+    @IBOutlet weak var dateTo: UILabel!
+    @IBOutlet weak var btnSet: UIButton!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -49,7 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                name: NSNotification.Name(rawValue: "reload"),
                                                object: nil)
         
-         //FIXME: refresh control
+        
         self.tableView.addSubview(self.refreshControl)
         
     }
@@ -72,11 +75,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //update info in table view cells and period labels
         tableView.reloadData()
         if(dataArray.count > 0) {
-            enteredFromDate.text = DateHelper.convertDateToString(date: dataArray.first?.from_date as! Date)
-            enteredToDate.text = DateHelper.convertDateToString(date: dataArray.last?.to_date as! Date)
+            dateFrom.text = DateHelper.convertDateToString(date: dataArray.first?.from_date as! Date)
+            dateTo.text = DateHelper.convertDateToString(date: dataArray.last?.to_date as! Date)
+            labelFrom.isHidden = false
+            labelTo.isHidden = false
         } else {
-            enteredFromDate.text = ""
-            enteredToDate.text = ""
+            dateFrom.text = ""
+            dateTo.text = ""
+            labelFrom.isHidden = true
+            labelTo.isHidden = true
+            
         }
     }
     

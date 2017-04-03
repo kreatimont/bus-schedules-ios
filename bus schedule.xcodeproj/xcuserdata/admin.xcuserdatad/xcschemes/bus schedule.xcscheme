@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "841EB8F11E841EED007AE710"
-            BuildableName = "BusSchedule.app"
-            BlueprintName = "BusSchedule"
-            ReferencedContainer = "container:BusSchedule.xcodeproj">
+            BuildableName = "bus schedule.app"
+            BlueprintName = "bus schedule"
+            ReferencedContainer = "container:bus schedule.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "841EB8F11E841EED007AE710"
-            BuildableName = "BusSchedule.app"
-            BlueprintName = "BusSchedule"
-            ReferencedContainer = "container:BusSchedule.xcodeproj">
+            BuildableName = "bus schedule.app"
+            BlueprintName = "bus schedule"
+            ReferencedContainer = "container:bus schedule.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
