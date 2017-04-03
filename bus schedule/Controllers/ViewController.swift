@@ -14,9 +14,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var labelTo: UILabel!
     @IBOutlet weak var labelFrom: UILabel!
+    
     @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var dateFrom: UILabel!
     @IBOutlet weak var dateTo: UILabel!
+    
     @IBOutlet weak var btnSet: UIButton!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -58,12 +61,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do some reloading of data and update the table view's data source
         // Fetch more objects from a web service, for example...
         
-        dataArray.sort { (itemOne, itemTwo) -> Bool in
-            return ((itemOne.from_date?.compare(itemTwo.from_date as! Date))?.rawValue)! > 0
+        DispatchQueue.global(qos: .background).async {
+            self.dataArray.sort { (itemOne, itemTwo) -> Bool in
+                return ((itemOne.from_date?.compare(itemTwo.from_date as! Date))?.rawValue)! > 0
+            }
+            sleep(3)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
         }
-        
-        self.tableView.reloadData()
-        self.refreshControl.endRefreshing()
+       
     }
     
     func updateViews() {

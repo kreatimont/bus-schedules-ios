@@ -35,10 +35,10 @@ class CoreDataManager {
                 fetchRequest.fetchLimit = 1
                 var idStr = String(describing: tmpData["id"])
                 fetchRequest.predicate = NSPredicate(format: "id == %@", idStr)
+                
                 let items = try context.fetch(fetchRequest) as! [ScheduleItem]
                 
                 if(items.count == 0) {
-                    
                     let newScheduleItem = NSEntityDescription.insertNewObject(forEntityName: "ScheduleItem", into: context)
                     
                     newScheduleItem.setValue(String(describing: tmpData["id"]) , forKey: "id")
@@ -54,6 +54,7 @@ class CoreDataManager {
                     fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
                     idStr = String(describing: fromCity["name"])
                     fetchRequest.predicate = NSPredicate(format: "name == %@", idStr)
+                    
                     let fromCities = try context.fetch(fetchRequest) as! [City]
                     
                     if(fromCities.count > 0) {
@@ -68,6 +69,7 @@ class CoreDataManager {
                     fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
                     idStr = String(describing: toCity["name"])
                     fetchRequest.predicate = NSPredicate(format: "name == %@", idStr)
+                    
                     let toCities = try context.fetch(fetchRequest) as! [City]
                     
                     if(toCities.count > 0) {
@@ -88,7 +90,7 @@ class CoreDataManager {
             }
         }
     }
-
+    
     func getScheduleItemById(id: String) -> ScheduleItem? {
         do {
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ScheduleItem")
@@ -126,7 +128,7 @@ class CoreDataManager {
             fetch.sortDescriptors = [sortDescriptor]
             return try context.fetch(fetch)
         } catch let error as NSError {
-            print("Data was not retrieved from CoreData, error: \(error.localizedDescription)")
+            print("Data was not retrieved, error: \(error.localizedDescription)")
         }
         return []
     }

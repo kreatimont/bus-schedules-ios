@@ -35,8 +35,7 @@ class SetDateViewController: UIViewController {
         activityIndicator.center = CGPoint(x: self.view.bounds.size.width/2, y: self.view.bounds.size.height/2)
         activityIndicator.backgroundColor = UIColor.darkGray
         activityIndicator.layer.cornerRadius = 6.0
-        activityIndicator.frame =
-            .init(x: self.view.bounds.size.width/2 - 40, y: self.view.bounds.size.height/2 - 40, width: 80.0, height: 80.0)
+        activityIndicator.frame = .init(x: self.view.bounds.size.width/2 - 40, y: self.view.bounds.size.height/2 - 40, width: 80.0, height: 80.0)
     }
 
     @IBAction func setDate(_ sender: Any) {
@@ -51,6 +50,7 @@ class SetDateViewController: UIViewController {
             self.view.addSubview(activityIndicator)
             activityIndicator.startAnimating()
             
+            
             self.navigationItem.hidesBackButton = true
             self.view.isUserInteractionEnabled = false
             self.btnSend.isEnabled = false
@@ -61,7 +61,7 @@ class SetDateViewController: UIViewController {
             activityIndicator.removeFromSuperview()
             activityIndicator.stopAnimating()
             
-            self.navigationItem.hidesBackButton = false
+            //self.navigationItem.hidesBackButton = false
             self.view.isUserInteractionEnabled = true
             self.btnSend.isEnabled = true
             self.fromDatePicker.isEnabled = true
@@ -72,14 +72,11 @@ class SetDateViewController: UIViewController {
     // MARK: Network
     func loadData(url: String) {
         
-        print("Start loading url: \(url)")
-        
         let manager = AFHTTPSessionManager()
         
         manager.get(url, parameters: nil, progress: nil,
                     success: { (operation, responseObject) in
-                        
-                        print("Load successed")
+                    
                         self.enableLoaderStub(state: false)
                         
                         let responseData = responseObject as! NSDictionary
@@ -94,7 +91,7 @@ class SetDateViewController: UIViewController {
             self.enableLoaderStub(state: false)
             print("Error: " + Error.localizedDescription)
             
-            let alert = UIAlertController(title: "Error", message: "Server not responding", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Error", message: Error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             alert.addAction(UIAlertAction(title: "Try again", style: UIAlertActionStyle.default, handler: { action in
                 self.loadData(url: url)

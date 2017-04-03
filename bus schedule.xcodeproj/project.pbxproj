@@ -153,6 +153,7 @@
 				TargetAttributes = {
 					841EB8F11E841EED007AE710 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = V62SU3773G;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -373,7 +374,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = V62SU3773G;
 				INFOPLIST_FILE = "bus schedule/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "id.bus-schedule";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -388,7 +391,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = V62SU3773G;
 				INFOPLIST_FILE = "bus schedule/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "id.bus-schedule";
 				PRODUCT_NAME = "$(TARGET_NAME)";
