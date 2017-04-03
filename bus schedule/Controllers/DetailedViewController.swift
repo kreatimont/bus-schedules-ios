@@ -27,22 +27,12 @@ class DetailedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Detailed activity recieve object: \(id)")
+        print("Detailed activity recieve object with id: \(id)")
         setUpData()
     }
     
     func setUpData() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        do {
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ScheduleItem")
-            fetchRequest.fetchLimit = 1
-            fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-            let object = try context.fetch(fetchRequest) as! [ScheduleItem]
-            setUpView(item: object[0])
-        } catch let error as NSError {
-            print("Detailed obj was not loaded, errer: \(error)")
-        }
-        
+        setUpView(item: CoreDataManager.getInstance().getScheduleItemById(id: id)!)
     }
     
     func setUpView(item: ScheduleItem) {

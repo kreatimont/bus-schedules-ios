@@ -10,10 +10,6 @@ import UIKit
 import AFNetworking
 import CoreData
 
-//extension Notification.Name {
-//    static let reload = Notification.Name("reload")
-//}
-
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var labelTo: UILabel!
@@ -45,7 +41,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        retrieveDataFromDb()
+        dataArray = CoreDataManager.getInstance().retrieveDataFromDb()
+        self.updateViews()
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.reloadTableData(_:)),
@@ -60,8 +57,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func handleRefresh(refreshControl: UIRefreshControl) {
         // Do some reloading of data and update the table view's data source
         // Fetch more objects from a web service, for example...
-        
-        NetworkManager.getInstance().loadData(array: dataArray)
         
         dataArray.sort { (itemOne, itemTwo) -> Bool in
             return ((itemOne.from_date?.compare(itemTwo.from_date as! Date))?.rawValue)! > 0
@@ -88,53 +83,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    //MARK: Core Data
+    
     func reloadTableData(_ notification: Notification) {
-        retrieveDataFromDb()
+        dataArray = CoreDataManager.getInstance().retrieveDataFromDb()
+        self.updateViews()
     }
     
     @IBAction func clearCoreData(_ sender: Any) {
-        clearDb()
+        CoreDataManager.getInstance().clearDb()
+        dataArray.removeAll()
+        self.updateViews()
     }
     
-    //MARK: Core Data
-    
-    func clearDb() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ScheduleItem")
-        let result = try? context.fetch(fetchRequest)
-        for object in result! {
-            context.delete(object as! NSManagedObject)
-        }
-        print("\(result?.count) (ScheduleItem) items to delete")
-        
-        let fetchRequestCity = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
-        let resultCity = try? context.fetch(fetchRequestCity)
-        for object in resultCity! {
-            context.delete(object as! NSManagedObject)
-        }
-        print("\(resultCity?.count) (ScheduleItem) items to delete")
-        do {
-            try context.save()
-        } catch let error as NSError {
-            print("Database was not cleared, error: \(error)")
-        }
-    
-        retrieveDataFromDb()
-    }
-    
-    func retrieveDataFromDb() {
-        do {
-            let fetch: NSFetchRequest = ScheduleItem.fetchRequest()
-            let sortDescriptor = NSSortDescriptor(key: "from_date", ascending: true)
-            fetch.sortDescriptors = [sortDescriptor]
-            dataArray.removeAll()
-            dataArray = try context.fetch(fetch)
-            
-            print("Data retrieved from DB, dataArray.count = \(dataArray.count)")
-        } catch let error as NSError {
-            print("Data was not retrieved, occured by \(error)")
-        }
-        updateViews()
-    }
     
     // MARK: Table view data source
     
@@ -180,7 +141,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell
     }
-    
     
     // MARK: TableView Cell click
     

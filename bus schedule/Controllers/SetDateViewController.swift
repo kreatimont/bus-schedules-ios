@@ -84,7 +84,7 @@ class SetDateViewController: UIViewController {
                         
                         let responseData = responseObject as! NSDictionary
                         if(responseData["success"] != nil) {
-                            self.parseJson(data: responseData["data"] as! NSArray)
+                            CoreDataManager.getInstance().saveJsonArrayToDB(data: responseData["data"] as! NSArray)
                         }
                     
                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
@@ -104,90 +104,6 @@ class SetDateViewController: UIViewController {
 
     }
     
-    
-    func parseJson(data: NSArray) {
-        for dataItem in data {
-            
-            let tmpData = dataItem as! NSDictionary
-            let fromCity = tmpData["from_city"] as! NSDictionary
-            let toCity = tmpData["to_city"] as! NSDictionary
-            
-            print("\nProccess: \(tmpData["id"])")
-            
-            do {
-                
-                var fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ScheduleItem")
-                fetchRequest.fetchLimit = 1
-                var idStr = String(describing: tmpData["id"])
-                fetchRequest.predicate = NSPredicate(format: "id == %@", idStr)
-                let items = try context.fetch(fetchRequest) as! [ScheduleItem]
-                
-                if(items.count == 0) {
-                    
-                    let newScheduleItem = NSEntityDescription.insertNewObject(forEntityName: "ScheduleItem", into: context)
-                    
-                    newScheduleItem.setValue(String(describing: tmpData["id"]) , forKey: "id")
-                    newScheduleItem.setValue(tmpData["info"] as! String, forKey: "info")
-                    newScheduleItem.setValue(tmpData["price"], forKey: "price")
-                    newScheduleItem.setValue(DateHelper.convertStringToDate(string: tmpData["from_date"] as! String), forKey: "from_date")
-                    newScheduleItem.setValue(DateHelper.convertStringToDate(string: tmpData["to_date"] as! String), forKey: "to_date")
-                    newScheduleItem.setValue(tmpData["from_time"],forKey: "from_time")
-                    newScheduleItem.setValue(tmpData["to_time"],forKey: "to_time")
-                    newScheduleItem.setValue(tmpData["from_info"], forKey: "from_info")
-                    newScheduleItem.setValue(tmpData["to_info"], forKey: "to_info")
-                    
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
-                    idStr = String(describing: fromCity["name"])
-                    fetchRequest.predicate = NSPredicate(format: "name == %@", idStr)
-                    let fromCities = try context.fetch(fetchRequest) as! [City]
-                    
-                    if(fromCities.count > 0) {
-                        print("\tCity \(fromCities[0].name) already existed")
-                        newScheduleItem.setValue(fromCities[0], forKey: "from_city")
-                    } else {
-                        let newFromCity = NSEntityDescription.insertNewObject(forEntityName: "City", into: context)
-                        newFromCity.setValue(fromCity["name"], forKey: "name")
-                        newFromCity.setValue(fromCity["highlight"], forKey: "highlight")
-                        print("\tNew city created = \(fromCity["name"])")
-                        newScheduleItem.setValue(newFromCity, forKey: "from_city")
-                        print("\t\tNew from city added to item  = \(newFromCity.value(forKey: "name"))")
-                    }
-                    
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
-                    idStr = String(describing: toCity["name"])
-                    fetchRequest.predicate = NSPredicate(format: "name == %@", idStr)
-                    let toCities = try context.fetch(fetchRequest) as! [City]
-                    
-                    if(toCities.count > 0) {
-                        print("\tCity \(toCities[0].name) already existed")
-                        newScheduleItem.setValue(toCities[0], forKey: "to_city")
-                    } else {
-                        let newToCity = NSEntityDescription.insertNewObject(forEntityName: "City", into: context)
-                        newToCity.setValue(toCity["name"], forKey: "name")
-                        newToCity.setValue(toCity["highlight"], forKey: "highlight")
-                        print("\tNew city created = \(toCity["name"])")
-                        newScheduleItem.setValue(newToCity, forKey: "to_city")
-                        print("\t\tNew to city added to item  = \(newToCity.value(forKey: "name"))")
-                    }
-                    
-                    print("\tData[\(tmpData["id"])] - Before context.save()")
-                    try context.save()
-                    loadedData.append(newScheduleItem as! ScheduleItem)
-                    print("\tData[\(tmpData["id"])] - SAVED")
-                    
-                } else {
-                    print("\tData[\(tmpData["id"])] - already exist, count: \(items.count), first: \(items[0].info)")
-                }
-                
-            } catch let error as NSError {
-                print("\tData[\(tmpData["id"])] - NOT SAVED: \(error.localizedDescription); \n\t\t Full text error: \(error)")
-            }
-            
-        }
-    }
-    
-    
-
     /*
     // MARK: - Navigation
 
