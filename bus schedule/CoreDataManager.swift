@@ -20,8 +20,12 @@ class CoreDataManager {
         return instance!
     }
     
+    init() {
+        self.context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+    }
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     func saveJsonArrayToDB(data: NSArray) {
         for dataItem in data {
             

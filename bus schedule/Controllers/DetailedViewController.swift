@@ -1,14 +1,6 @@
-//
-//  DetailedViewController.swift
-//  BusSchedule
-//
-//  Created by admin on 3/28/17.
-//  Copyright © 2017 admin. All rights reserved.
-//
-
 class DetailedViewController: UIViewController {
 
-    var id: String! = ""
+    var scheduleItem: ScheduleItem? = nil
     
     @IBOutlet weak var fromCity: UILabel!
     @IBOutlet weak var toCity: UILabel!
@@ -23,14 +15,10 @@ class DetailedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpData()
+        setUpWithScheduleItem(item: scheduleItem!)
     }
     
-    func setUpData() {
-        setUpView(item: CoreDataManager.getInstance().getScheduleItemById(id: id)!)
-    }
-    
-    func setUpView(item: ScheduleItem) {
+    func setUpWithScheduleItem(item: ScheduleItem) {
         fromCity.text = item.from_city?.name
         toCity.text = item.to_city?.name
         fromDate.text = DateHelper.convertDateToString(date: item.from_date as! Date)

@@ -1,19 +1,6 @@
-//
-//  DateHelper.swift
-//  BusSchedule
-//
-//  Created by admin on 3/29/17.
-//  Copyright © 2017 admin. All rights reserved.
-//
-
-import Foundation
-
-
 class DateHelper {
     
-    
     static let dateFormatterGet = DateFormatter()
-    
     static let dateFormatter = DateFormatter()
     
     static func convertStringToDate(string: String) -> Date{

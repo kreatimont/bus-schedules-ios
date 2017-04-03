@@ -1,16 +1,4 @@
-//
-//  ViewController.swift
-//  BusSchedule
-//
-//  Created by admin on 3/23/17.
-//  Copyright © 2017 admin. All rights reserved.
-//
-
-import UIKit
-import AFNetworking
-import CoreData
-
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
     
     @IBOutlet weak var labelTo: UILabel!
     @IBOutlet weak var labelFrom: UILabel!
@@ -21,78 +9,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var dateTo: UILabel!
     
     @IBOutlet weak var btnSet: UIButton!
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+
     var dataArray: [ScheduleItem] = []
+    
     let cellId = "scheduleCell"
 
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh), for: UIControlEvents.valueChanged)
-        
-        return refreshControl
-    }()
-
+    let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //for merging data in core data
-        self.context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-        
-        //implement tableView
-        tableView.delegate = self
-        tableView.dataSource = self
-        
+    
         dataArray = CoreDataManager.getInstance().retrieveDataFromDb()
         self.updateViews()
+        initTableView()
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.reloadTableData(_:)),
-                                               name: NSNotification.Name(rawValue: "reload"),
-                                               object: nil)
-        
-        
-        self.tableView.addSubview(self.refreshControl)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableData(_:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
-    
-    func handleRefresh(refreshControl: UIRefreshControl) {
-        // Do some reloading of data and update the table view's data source
-        // Fetch more objects from a web service, for example...
-        
-        DispatchQueue.global(qos: .background).async {
-            self.dataArray.sort { (itemOne, itemTwo) -> Bool in
-                return ((itemOne.from_date?.compare(itemTwo.from_date as! Date))?.rawValue)! > 0
-            }
-            sleep(3)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.refreshControl.endRefreshing()
-            }
-        }
-       
-    }
-    
-    func updateViews() {
-        //update info in table view cells and period labels
-        tableView.reloadData()
-        if(dataArray.count > 0) {
-            dateFrom.text = DateHelper.convertDateToString(date: dataArray.first?.from_date as! Date)
-            dateTo.text = DateHelper.convertDateToString(date: dataArray.last?.to_date as! Date)
-            labelFrom.isHidden = false
-            labelTo.isHidden = false
-        } else {
-            dateFrom.text = ""
-            dateTo.text = ""
-            labelFrom.isHidden = true
-            labelTo.isHidden = true
-            
-        }
-    }
-    
-    //MARK: Core Data
-    
+
     func reloadTableData(_ notification: Notification) {
         dataArray = CoreDataManager.getInstance().retrieveDataFromDb()
         self.updateViews()
@@ -104,11 +37,57 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.updateViews()
     }
     
+    func updateViews() {
+        //update info in table view cells and labels
+        tableView.reloadData()
+        if(dataArray.count > 0) {
+            tableView.addSubview(self.refreshControl)
+            refreshControl.isEnabled = true
+            dateFrom.text = DateHelper.convertDateToString(date: dataArray.first?.from_date as! Date)
+            dateTo.text = DateHelper.convertDateToString(date: dataArray.last?.to_date as! Date)
+            labelFrom.isHidden = false
+            labelTo.isHidden = false
+        } else {
+            self.refreshControl.removeFromSuperview()
+            refreshControl.isEnabled = false
+            dateFrom.text = ""
+            dateTo.text = ""
+            labelFrom.isHidden = true
+            labelTo.isHidden = true
+        }
+    }
+    
+    func initTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    
+        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh), for: UIControlEvents.valueChanged)
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        DispatchQueue.global(qos: .background).async {
+            ApiManager.instance.loadData(listener: self, url: ApiManager.instance.createUrl(dateFrom: self.dataArray.first?.from_date as! Date, dateTo: self.dataArray.last?.from_date as! Date))
+        }
+    }
+    
+    //MARK: Api listener implements 
+    
+    internal func success() {
+        self.updateViews()
+        self.refreshControl.endRefreshing()
+    }
+    
+    internal func parseError() {
+        self.refreshControl.endRefreshing()
+    }
+    
+    internal func connectionError(error: NSError, url: String) {
+        self.refreshControl.endRefreshing()
+    }
     
     // MARK: Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         var numOfSection: Int = 0
         
         if dataArray.count == 0 {
@@ -156,7 +135,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if(segue.identifier == "detSeq") {
             let detailedVC = segue.destination as! DetailedViewController
             let selectedRow = tableView.indexPathForSelectedRow!.row
-            detailedVC.id = dataArray[selectedRow].id!
+            detailedVC.scheduleItem = dataArray[selectedRow]
         }
     }
 

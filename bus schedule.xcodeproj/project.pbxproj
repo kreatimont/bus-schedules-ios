@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05A0642F1E928692001F729D /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0642E1E928692001F729D /* ApiManager.swift */; };
+		05A064331E9295EF001F729D /* ApiListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A064321E9295EF001F729D /* ApiListener.swift */; };
 		840FA6331E8942F200B8A80E /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA6321E8942F200B8A80E /* ScheduleCell.swift */; };
 		841EB8F61E841EEE007AE710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EB8F51E841EEE007AE710 /* AppDelegate.swift */; };
 		841EB8FB1E841EEF007AE710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841EB8F91E841EEF007AE710 /* Main.storyboard */; };
@@ -16,12 +18,14 @@
 		8466AA551E925F9600834C0D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466AA541E925F9600834C0D /* CoreDataManager.swift */; };
 		84F95CC01E8D59BA00658A7F /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBD1E8D59BA00658A7F /* DetailedViewController.swift */; };
 		84F95CC11E8D59BA00658A7F /* SetDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBE1E8D59BA00658A7F /* SetDateViewController.swift */; };
-		84F95CC21E8D59BA00658A7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBF1E8D59BA00658A7F /* ViewController.swift */; };
+		84F95CC21E8D59BA00658A7F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBF1E8D59BA00658A7F /* MainViewController.swift */; };
 		84FE585D1E8BB48F007B300F /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE585C1E8BB48F007B300F /* DateHelper.swift */; };
 		BF192925BD406188E5BC7B34 /* Pods_bus_schedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE91F4A08AD9007A19C7CF27 /* Pods_bus_schedule.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05A0642E1E928692001F729D /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		05A064321E9295EF001F729D /* ApiListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiListener.swift; sourceTree = "<group>"; };
 		30153C863FA09129DCCE900A /* Pods-bus schedule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bus schedule.release.xcconfig"; path = "Pods/Target Support Files/Pods-bus schedule/Pods-bus schedule.release.xcconfig"; sourceTree = "<group>"; };
 		6AE99E278E630BED643C62B7 /* Pods-bus schedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bus schedule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bus schedule/Pods-bus schedule.debug.xcconfig"; sourceTree = "<group>"; };
 		840FA6321E8942F200B8A80E /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
@@ -32,12 +36,12 @@
 		841EB8FF1E841EEF007AE710 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		841EB9021E841EEF007AE710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		841EB9041E841EEF007AE710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8466AA541E925F9600834C0D /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		8466AA541E925F9600834C0D /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = "bus schedule/CoreDataManager.swift"; sourceTree = "<group>"; };
 		84F12BCF1E854F270082FB6C /* BusSchedule-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BusSchedule-Bridging-Header.h"; sourceTree = "<group>"; };
 		84F95CBD1E8D59BA00658A7F /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailedViewController.swift; path = Controllers/DetailedViewController.swift; sourceTree = "<group>"; };
 		84F95CBE1E8D59BA00658A7F /* SetDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetDateViewController.swift; path = Controllers/SetDateViewController.swift; sourceTree = "<group>"; };
-		84F95CBF1E8D59BA00658A7F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
-		84FE585C1E8BB48F007B300F /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		84F95CBF1E8D59BA00658A7F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controllers/MainViewController.swift; sourceTree = "<group>"; };
+		84FE585C1E8BB48F007B300F /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = "bus schedule/DateHelper.swift"; sourceTree = "<group>"; };
 		BE91F4A08AD9007A19C7CF27 /* Pods_bus_schedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bus_schedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -53,6 +57,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05A0642C1E928664001F729D /* db_manager */ = {
+			isa = PBXGroup;
+			children = (
+				8466AA541E925F9600834C0D /* CoreDataManager.swift */,
+			);
+			name = db_manager;
+			sourceTree = "<group>";
+		};
+		05A0642D1E928675001F729D /* api_manager */ = {
+			isa = PBXGroup;
+			children = (
+				05A064321E9295EF001F729D /* ApiListener.swift */,
+				05A0642E1E928692001F729D /* ApiManager.swift */,
+				84FE585C1E8BB48F007B300F /* DateHelper.swift */,
+			);
+			name = api_manager;
+			sourceTree = "<group>";
+		};
 		682FB63587385967A0BB98BC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +87,8 @@
 		841EB8E91E841EED007AE710 = {
 			isa = PBXGroup;
 			children = (
+				05A0642D1E928675001F729D /* api_manager */,
+				05A0642C1E928664001F729D /* db_manager */,
 				84F95CB01E8D550D00658A7F /* controllers */,
 				841EB8F41E841EEE007AE710 /* bus_schedule */,
 				841EB8F31E841EEE007AE710 /* Products */,
@@ -87,8 +111,6 @@
 				84F12BCF1E854F270082FB6C /* BusSchedule-Bridging-Header.h */,
 				841EB8F51E841EEE007AE710 /* AppDelegate.swift */,
 				840FA6321E8942F200B8A80E /* ScheduleCell.swift */,
-				84FE585C1E8BB48F007B300F /* DateHelper.swift */,
-				8466AA541E925F9600834C0D /* CoreDataManager.swift */,
 				841EB8F91E841EEF007AE710 /* Main.storyboard */,
 				841EB9011E841EEF007AE710 /* LaunchScreen.storyboard */,
 				841EB9041E841EEF007AE710 /* Info.plist */,
@@ -104,7 +126,7 @@
 			children = (
 				84F95CBD1E8D59BA00658A7F /* DetailedViewController.swift */,
 				84F95CBE1E8D59BA00658A7F /* SetDateViewController.swift */,
-				84F95CBF1E8D59BA00658A7F /* ViewController.swift */,
+				84F95CBF1E8D59BA00658A7F /* MainViewController.swift */,
 			);
 			name = controllers;
 			path = "bus schedule";
@@ -242,11 +264,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05A064331E9295EF001F729D /* ApiListener.swift in Sources */,
 				841EB8FE1E841EEF007AE710 /* bus_schedule.xcdatamodeld in Sources */,
+				05A0642F1E928692001F729D /* ApiManager.swift in Sources */,
 				84FE585D1E8BB48F007B300F /* DateHelper.swift in Sources */,
 				84F95CC01E8D59BA00658A7F /* DetailedViewController.swift in Sources */,
 				84F95CC11E8D59BA00658A7F /* SetDateViewController.swift in Sources */,
-				84F95CC21E8D59BA00658A7F /* ViewController.swift in Sources */,
+				84F95CC21E8D59BA00658A7F /* MainViewController.swift in Sources */,
 				841EB8F61E841EEE007AE710 /* AppDelegate.swift in Sources */,
 				8466AA551E925F9600834C0D /* CoreDataManager.swift in Sources */,
 				840FA6331E8942F200B8A80E /* ScheduleCell.swift in Sources */,
