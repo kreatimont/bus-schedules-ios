@@ -1,12 +1,4 @@
-//
-//  AppDelegate.swift
-//  bus schedule
-//
-//  Created by admin on 3/23/17.
-//  Copyright © 2017 admin. All rights reserved.
-//
 
-import UIKit
 import CoreData
 
 @UIApplicationMain

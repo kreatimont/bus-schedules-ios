@@ -1,3 +1,4 @@
+
 class DetailedViewController: UIViewController {
 
     var scheduleItem: ScheduleItem? = nil
@@ -21,8 +22,8 @@ class DetailedViewController: UIViewController {
     func setUpWithScheduleItem(item: ScheduleItem) {
         fromCity.text = item.from_city?.name
         toCity.text = item.to_city?.name
-        fromDate.text = DateHelper.convertDateToString(date: item.from_date as! Date)
-        toDate.text = DateHelper.convertDateToString(date: item.to_date as! Date)
+        fromDate.text = DateConverter.convertDateToString(date: item.from_date as! Date)
+        toDate.text = DateConverter.convertDateToString(date: item.to_date as! Date)
         info.text = item.info
         price.text = String(describing: item.price)
         fromTime.text = item.from_time

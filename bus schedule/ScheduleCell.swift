@@ -1,10 +1,3 @@
-//
-//  ScheduleCell.swift
-//  BusSchedule
-//
-//  Created by admin on 3/27/17.
-//  Copyright © 2017 admin. All rights reserved.
-//
 
 class ScheduleCell: UITableViewCell {
     

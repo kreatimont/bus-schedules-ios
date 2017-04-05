@@ -1,4 +1,5 @@
-class DateHelper {
+
+class DateConverter {
     
     static let dateFormatterGet = DateFormatter()
     static let dateFormatter = DateFormatter()

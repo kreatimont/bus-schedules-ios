@@ -1,3 +1,4 @@
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
     
     @IBOutlet weak var labelTo: UILabel!
@@ -19,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        dataArray = CoreDataManager.getInstance().retrieveDataFromDb()
+        dataArray = CoreDataManager.instance.retrieveDataFromDb()
         self.updateViews()
         initTableView()
         
@@ -27,24 +28,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func reloadTableData(_ notification: Notification) {
-        dataArray = CoreDataManager.getInstance().retrieveDataFromDb()
+        dataArray = CoreDataManager.instance.retrieveDataFromDb()
         self.updateViews()
     }
     
     @IBAction func clearCoreData(_ sender: Any) {
-        CoreDataManager.getInstance().clearDb()
+        CoreDataManager.instance.clearDb()
         dataArray.removeAll()
         self.updateViews()
     }
     
     func updateViews() {
-        //update info in table view cells and labels
         tableView.reloadData()
         if(dataArray.count > 0) {
             tableView.addSubview(self.refreshControl)
             refreshControl.isEnabled = true
-            dateFrom.text = DateHelper.convertDateToString(date: dataArray.first?.from_date as! Date)
-            dateTo.text = DateHelper.convertDateToString(date: dataArray.last?.to_date as! Date)
+            dateFrom.text = DateConverter.convertDateToString(date: dataArray.first?.from_date as! Date)
+            dateTo.text = DateConverter.convertDateToString(date: dataArray.last?.to_date as! Date)
             labelFrom.isHidden = false
             labelTo.isHidden = false
         } else {
@@ -70,7 +70,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    //MARK: Api listener implements 
+    //MARK: Api listener implementation
     
     internal func success() {
         self.updateViews()
@@ -85,7 +85,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.refreshControl.endRefreshing()
     }
     
-    // MARK: Table view data source
+    // MARK: Table view data source & delegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
         var numOfSection: Int = 0
@@ -122,14 +122,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let scheduleItem = dataArray[indexPath.row]
         
         cell.info.text = (scheduleItem.from_city?.name)! + " -> " + (scheduleItem.to_city?.name)!
-        cell.fromDate.text = DateHelper.convertDateToString(date: scheduleItem.from_date as! Date)
-        cell.toDate.text = DateHelper.convertDateToString(date: scheduleItem.to_date as! Date)
+        cell.fromDate.text = DateConverter.convertDateToString(date: scheduleItem.from_date as! Date)
+        cell.toDate.text = DateConverter.convertDateToString(date: scheduleItem.to_date as! Date)
+        cell.toDate.text = DateConverter.convertDateToString(date: Date())
         cell.price.text = String(scheduleItem.price)
         
         return cell
     }
-    
-    // MARK: TableView Cell click
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "detSeq") {
@@ -140,7 +139,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
 }
-
 
 
 

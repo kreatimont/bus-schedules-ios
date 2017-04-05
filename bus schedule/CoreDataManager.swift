@@ -1,25 +1,10 @@
-//
-//  CoreDataManager.swift
-//  bus schedule
-//
-//  Created by admin on 4/3/17.
-//  Copyright © 2017 admin. All rights reserved.
-//
 
-import Foundation
 import CoreData
 
 class CoreDataManager {
     
-    static var instance: CoreDataManager? = nil
-    
-    static func getInstance() -> CoreDataManager {
-        if(instance == nil) {
-            instance = CoreDataManager()
-        }
-        return instance!
-    }
-    
+    static let instance = CoreDataManager()
+        
     init() {
         self.context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
     }
@@ -48,8 +33,8 @@ class CoreDataManager {
                     newScheduleItem.setValue(String(describing: tmpData["id"]) , forKey: "id")
                     newScheduleItem.setValue(tmpData["info"] as! String, forKey: "info")
                     newScheduleItem.setValue(tmpData["price"], forKey: "price")
-                    newScheduleItem.setValue(DateHelper.convertStringToDate(string: tmpData["from_date"] as! String), forKey: "from_date")
-                    newScheduleItem.setValue(DateHelper.convertStringToDate(string: tmpData["to_date"] as! String), forKey: "to_date")
+                    newScheduleItem.setValue(DateConverter.convertStringToDate(string: tmpData["from_date"] as! String), forKey: "from_date")
+                    newScheduleItem.setValue(DateConverter.convertStringToDate(string: tmpData["to_date"] as! String), forKey: "to_date")
                     newScheduleItem.setValue(tmpData["from_time"],forKey: "from_time")
                     newScheduleItem.setValue(tmpData["to_time"],forKey: "to_time")
                     newScheduleItem.setValue(tmpData["from_info"], forKey: "from_info")

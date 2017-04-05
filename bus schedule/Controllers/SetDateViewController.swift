@@ -1,8 +1,3 @@
-//  SetDateViewController.swift
-//  BusSchedule
-//
-//  Created by admin on 3/29/17.
-//  Copyright © 2017 admin. All rights reserved.
 
 import AFNetworking
 
@@ -32,25 +27,26 @@ class SetDateViewController: UIViewController, ApiListener {
     
     @IBAction func setDate(_ sender: Any) {
         isLoaderStub(state: true)
-        //let url: String = baseURL + modeFromDate + DateHelper.convertDateToStringForResponse(date: fromDatePicker.date) + modeToDate + DateHelper.convertDateToStringForResponse(date: toDatePicker.date)
         ApiManager.instance.loadData(listener: self, url: ApiManager.instance.createUrl(dateFrom: fromDatePicker.date, dateTo: toDatePicker.date))
     }
     
     func isLoaderStub(state: Bool) {
         if state {
+            self.view.isUserInteractionEnabled = false
+            
             self.view.addSubview(activityIndicator)
             activityIndicator.startAnimating()
         
-            self.navigationItem.hidesBackButton = true
             self.view.isUserInteractionEnabled = false
             self.btnSend.isEnabled = false
             self.fromDatePicker.isEnabled = false
             self.toDatePicker.isEnabled = false
         } else {
+            self.view.isUserInteractionEnabled = true
+            
             activityIndicator.removeFromSuperview()
             activityIndicator.stopAnimating()
             
-            //self.navigationItem.hidesBackButton = false
             self.view.isUserInteractionEnabled = true
             self.btnSend.isEnabled = true
             self.fromDatePicker.isEnabled = true
