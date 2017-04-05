@@ -19,7 +19,7 @@
 		84F95CC01E8D59BA00658A7F /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBD1E8D59BA00658A7F /* DetailedViewController.swift */; };
 		84F95CC11E8D59BA00658A7F /* SetDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBE1E8D59BA00658A7F /* SetDateViewController.swift */; };
 		84F95CC21E8D59BA00658A7F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBF1E8D59BA00658A7F /* MainViewController.swift */; };
-		84FE585D1E8BB48F007B300F /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE585C1E8BB48F007B300F /* DateHelper.swift */; };
+		84FE585D1E8BB48F007B300F /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE585C1E8BB48F007B300F /* DateConverter.swift */; };
 		BF192925BD406188E5BC7B34 /* Pods_bus_schedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE91F4A08AD9007A19C7CF27 /* Pods_bus_schedule.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +41,7 @@
 		84F95CBD1E8D59BA00658A7F /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailedViewController.swift; path = Controllers/DetailedViewController.swift; sourceTree = "<group>"; };
 		84F95CBE1E8D59BA00658A7F /* SetDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetDateViewController.swift; path = Controllers/SetDateViewController.swift; sourceTree = "<group>"; };
 		84F95CBF1E8D59BA00658A7F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controllers/MainViewController.swift; sourceTree = "<group>"; };
-		84FE585C1E8BB48F007B300F /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = "bus schedule/DateHelper.swift"; sourceTree = "<group>"; };
+		84FE585C1E8BB48F007B300F /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateConverter.swift; path = "bus schedule/DateConverter.swift"; sourceTree = "<group>"; };
 		BE91F4A08AD9007A19C7CF27 /* Pods_bus_schedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bus_schedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,7 +70,7 @@
 			children = (
 				05A064321E9295EF001F729D /* ApiListener.swift */,
 				05A0642E1E928692001F729D /* ApiManager.swift */,
-				84FE585C1E8BB48F007B300F /* DateHelper.swift */,
+				84FE585C1E8BB48F007B300F /* DateConverter.swift */,
 			);
 			name = api_manager;
 			sourceTree = "<group>";
@@ -267,7 +267,7 @@
 				05A064331E9295EF001F729D /* ApiListener.swift in Sources */,
 				841EB8FE1E841EEF007AE710 /* bus_schedule.xcdatamodeld in Sources */,
 				05A0642F1E928692001F729D /* ApiManager.swift in Sources */,
-				84FE585D1E8BB48F007B300F /* DateHelper.swift in Sources */,
+				84FE585D1E8BB48F007B300F /* DateConverter.swift in Sources */,
 				84F95CC01E8D59BA00658A7F /* DetailedViewController.swift in Sources */,
 				84F95CC11E8D59BA00658A7F /* SetDateViewController.swift in Sources */,
 				84F95CC21E8D59BA00658A7F /* MainViewController.swift in Sources */,

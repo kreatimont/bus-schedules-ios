@@ -1,3 +1,4 @@
+
 import AFNetworking
 
 class ApiManager {
@@ -16,7 +17,7 @@ class ApiManager {
                         
                         let responseData = responseObject as! NSDictionary
                         if(responseData["success"] != nil) {
-                            CoreDataManager.getInstance().saveJsonArrayToDB(data: responseData["data"] as! NSArray)
+                            CoreDataManager.instance.saveJsonArrayToDB(data: responseData["data"] as! NSArray)
                             listener.success()
                         } else {
                             listener.parseError()
@@ -28,6 +29,6 @@ class ApiManager {
     }
     
     func createUrl(dateFrom: Date, dateTo: Date) -> String {
-        return baseURL + modeFromDate + DateHelper.convertDateToStringForResponse(date: dateFrom) + modeToDate + DateHelper.convertDateToStringForResponse(date: dateTo)
+        return baseURL + modeFromDate + DateConverter.convertDateToStringForResponse(date: dateFrom) + modeToDate + DateConverter.convertDateToStringForResponse(date: dateTo)
     }
 }
