@@ -21,4 +21,9 @@ class DateConverter {
         return dateFormatter.string(from: date)
     }
     
+    static func createDateFromResponse(date: String, time: String) -> Date {
+        dateFormatterGet.dateFormat = "yyyy-MM-dd H:m:ss"
+        return dateFormatterGet.date(from: "\(date) \(time)")!
+    }
+    
 }

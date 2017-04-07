@@ -3,6 +3,11 @@ import CoreData
 
 class CoreDataManager {
     
+    enum DataBaseType {
+        case CoreData
+        case Realm
+    }
+    
     static let instance = CoreDataManager()
         
     init() {

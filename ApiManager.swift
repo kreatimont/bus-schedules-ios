@@ -17,7 +17,11 @@ class ApiManager {
                         
                         let responseData = responseObject as! NSDictionary
                         if(responseData["success"] != nil) {
-                            CoreDataManager.instance.saveJsonArrayToDB(data: responseData["data"] as! NSArray)
+                            
+                            RealmManager.instance.saveJsonArrayToRealm(data: responseData["data"] as! NSArray)
+                            
+                            print("Items loaded")
+                            //CoreDataManager.instance.saveJsonArrayToDB(data: responseData["data"] as! NSArray)
                             listener.success()
                         } else {
                             listener.parseError()
