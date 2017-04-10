@@ -22,6 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        //set current db manager
         dbManager = CoreDataDbManager.instance
         
         dataArray = (dbManager?.retrieveDataFromDb())!
@@ -38,7 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func clearCoreData(_ sender: Any) {
-        CoreDataManager.instance.clearDb()
+        dbManager?.clearDb()
         dataArray.removeAll()
         self.updateViews()
     }

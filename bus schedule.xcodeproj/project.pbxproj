@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		054D127C1E97C27D005D3A06 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054D127B1E97C27D005D3A06 /* RealmManager.swift */; };
 		054D128C1E97C5A0005D3A06 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 054D128B1E97C5A0005D3A06 /* Realm.framework */; };
 		054D128D1E97C5A0005D3A06 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 054D128B1E97C5A0005D3A06 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		054D128F1E97C5A5005D3A06 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 054D128E1E97C5A5005D3A06 /* RealmSwift.framework */; };
@@ -30,7 +29,6 @@
 		841EB8FE1E841EEF007AE710 /* bus_schedule.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 841EB8FC1E841EEF007AE710 /* bus_schedule.xcdatamodeld */; };
 		841EB9001E841EEF007AE710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841EB8FF1E841EEF007AE710 /* Assets.xcassets */; };
 		841EB9031E841EEF007AE710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841EB9011E841EEF007AE710 /* LaunchScreen.storyboard */; };
-		8466AA551E925F9600834C0D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466AA541E925F9600834C0D /* CoreDataManager.swift */; };
 		84F95CC01E8D59BA00658A7F /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBD1E8D59BA00658A7F /* DetailedViewController.swift */; };
 		84F95CC11E8D59BA00658A7F /* SetDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBE1E8D59BA00658A7F /* SetDateViewController.swift */; };
 		84F95CC21E8D59BA00658A7F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBF1E8D59BA00658A7F /* MainViewController.swift */; };
@@ -54,7 +52,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		054D127B1E97C27D005D3A06 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmManager.swift; path = "bus schedule/RealmManager.swift"; sourceTree = "<group>"; };
 		054D128B1E97C5A0005D3A06 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		054D128E1E97C5A5005D3A06 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		059FCFB11E9BB62D00494966 /* ScheduleCityRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleCityRealm.swift; path = "bus schedule/Model/ScheduleCityRealm.swift"; sourceTree = "<group>"; };
@@ -79,7 +76,6 @@
 		841EB8FF1E841EEF007AE710 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		841EB9021E841EEF007AE710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		841EB9041E841EEF007AE710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8466AA541E925F9600834C0D /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = "bus schedule/CoreDataManager.swift"; sourceTree = "<group>"; };
 		84F12BCF1E854F270082FB6C /* BusSchedule-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BusSchedule-Bridging-Header.h"; sourceTree = "<group>"; };
 		84F95CBD1E8D59BA00658A7F /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailedViewController.swift; path = Controllers/DetailedViewController.swift; sourceTree = "<group>"; };
 		84F95CBE1E8D59BA00658A7F /* SetDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetDateViewController.swift; path = Controllers/SetDateViewController.swift; sourceTree = "<group>"; };
@@ -119,8 +115,6 @@
 		05A0642C1E928664001F729D /* db */ = {
 			isa = PBXGroup;
 			children = (
-				8466AA541E925F9600834C0D /* CoreDataManager.swift */,
-				054D127B1E97C27D005D3A06 /* RealmManager.swift */,
 				059FCFB71E9BB94000494966 /* CoreDataDbManager.swift */,
 				059FCFB91E9BC0D900494966 /* AbstractDbManager.swift */,
 				059FCFBB1E9BCA9900494966 /* RealmDbManager.swift */,
@@ -334,7 +328,6 @@
 				059FCFB81E9BB94000494966 /* CoreDataDbManager.swift in Sources */,
 				05A064331E9295EF001F729D /* ApiListener.swift in Sources */,
 				841EB8FE1E841EEF007AE710 /* bus_schedule.xcdatamodeld in Sources */,
-				054D127C1E97C27D005D3A06 /* RealmManager.swift in Sources */,
 				059FCFF31E9BD3A800494966 /* City+CoreDataClass.swift in Sources */,
 				059FCFB31E9BB62D00494966 /* ScheduleCityRealm.swift in Sources */,
 				05A0642F1E928692001F729D /* ApiManager.swift in Sources */,
@@ -346,7 +339,6 @@
 				84F95CC21E8D59BA00658A7F /* MainViewController.swift in Sources */,
 				841EB8F61E841EEE007AE710 /* AppDelegate.swift in Sources */,
 				059FCFF21E9BD3A800494966 /* ScheduleItem+CoreDataProperties.swift in Sources */,
-				8466AA551E925F9600834C0D /* CoreDataManager.swift in Sources */,
 				059FCFF41E9BD3A800494966 /* City+CoreDataProperties.swift in Sources */,
 				059FCFBC1E9BCA9A00494966 /* RealmDbManager.swift in Sources */,
 				059FCFB41E9BB62D00494966 /* ScheduleItemRealm.swift in Sources */,
