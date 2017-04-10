@@ -10,7 +10,7 @@ class ApiManager {
     let baseURL = "http://smartbus.gmoby.org/web/index.php/api/trips"
     let modeFromDate = "?from_date=", modeToDate = "&to_date="
     
-    func loadData(listener: ApiListener, url: String) {
+    func loadData(listener: ApiListener, url: String, dbManager: AbstractDbManager) {
         
         manager.get(url, parameters: nil, progress: nil,
                     success: { (operation, responseObject) in
@@ -18,10 +18,9 @@ class ApiManager {
                         let responseData = responseObject as! NSDictionary
                         if(responseData["success"] != nil) {
                             
-                            RealmManager.instance.saveJsonArrayToRealm(data: responseData["data"] as! NSArray)
-                            
+                            dbManager.saveJsonArrayToDb(data: responseData["data"] as! NSArray)
                             print("Items loaded")
-                            //CoreDataManager.instance.saveJsonArrayToDB(data: responseData["data"] as! NSArray)
+                            
                             listener.success()
                         } else {
                             listener.parseError()

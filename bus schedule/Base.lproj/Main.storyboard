@@ -50,7 +50,7 @@
                                 <rect key="frame" x="364" y="94" width="30" height="30"/>
                                 <state key="normal" title="Set"/>
                                 <connections>
-                                    <segue destination="Lss-ZK-Izm" kind="show" id="7W8-WF-Fnh"/>
+                                    <segue destination="Lss-ZK-Izm" kind="show" identifier="setDate" id="7W8-WF-Fnh"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="115" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7gP-4o-asF">

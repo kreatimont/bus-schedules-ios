@@ -3,7 +3,8 @@ class DetailedViewController: UIViewController {
 
     //var scheduleItem: ScheduleItem? = nil
     var scheduleItem: ScheduleItemRealm? = nil
-
+    var model: UniversalDbModel? = nil
+    
     
     @IBOutlet weak var fromCity: UILabel!
     @IBOutlet weak var toCity: UILabel!
@@ -18,43 +19,20 @@ class DetailedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setUpWithScheduleItem(item: ScheduleItem!)
-        setUp(item: scheduleItem!)
+        setUpWithModel(model: model!)
         
     }
     
-    func setUpWithScheduleItem(item: ScheduleItemRealm) {
-//        fromCity.text = item.from_city?.name
-//        toCity.text = item.to_city?.name
-//        fromDate.text = DateConverter.convertDateToString(date: item.from_date as! Date)
-//        toDate.text = DateConverter.convertDateToString(date: item.to_date as! Date)
-//        info.text = item.info
-//        price.text = String(describing: item.price)
-//        fromTime.text = item.from_time
-//        toTime.text = item.to_time
-//        fromInfo.text = item.from_info
-//        toInfo.text = item.to_info
-        
-        fromCity.text = item.fromCity?.name
-        toCity.text = item.toCity?.name
-        fromDate.text = DateConverter.convertDateToString(date: item.fromDate)
-        toDate.text = DateConverter.convertDateToString(date: item.toDate)
-        info.text = item.info
-        price.text = String(describing: item.price)
-        fromInfo.text = item.fromInfo
-        toInfo.text = item.toInfo
-        
+    func setUpWithModel(model: UniversalDbModel) {
+        fromCity.text = model.getFromCityName()
+        toCity.text = model.getToCityName()
+        fromDate.text = DateConverter.convertDateToString(date: model.getFromDate())
+        toDate.text = DateConverter.convertDateToString(date: model.getToDate())
+        info.text = model.getInfo()
+        price.text = String(describing: model.getPrice())
+        fromInfo.text = model.getFromInfo()
+        toInfo.text = model.getToInfo()
     }
     
-    func setUp(item: ScheduleItemRealm) {
-        fromCity.text = item.fromCity?.name
-        toCity.text = item.toCity?.name
-        fromDate.text = DateConverter.convertDateToString(date: item.fromDate)
-        toDate.text = DateConverter.convertDateToString(date: item.toDate)
-        info.text = item.info
-        price.text = String(describing: item.price)
-        fromInfo.text = item.fromInfo
-        toInfo.text = item.toInfo
-    }
 
 }

@@ -10,7 +10,9 @@ class SetDateViewController: UIViewController, ApiListener {
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
     
-    var loadedData: [ScheduleItem] = []
+    var loadedData: [UniversalDbModel] = []
+    
+    var dbManager: AbstractDbManager? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,7 @@ class SetDateViewController: UIViewController, ApiListener {
     
     @IBAction func setDate(_ sender: Any) {
         isLoaderStub(state: true)
-        ApiManager.instance.loadData(listener: self, url: ApiManager.instance.createUrl(dateFrom: fromDatePicker.date, dateTo: toDatePicker.date))
+        ApiManager.instance.loadData(listener: self, url: ApiManager.instance.createUrl(dateFrom: fromDatePicker.date, dateTo: toDatePicker.date), dbManager: dbManager!)
     }
     
     func isLoaderStub(state: Bool) {
@@ -74,7 +76,7 @@ class SetDateViewController: UIViewController, ApiListener {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         alert.addAction(UIAlertAction(title: "Try again", style: UIAlertActionStyle.default, handler: { action in
-            ApiManager.instance.loadData(listener: self, url: url)
+            ApiManager.instance.loadData(listener: self, url: url, dbManager: self.dbManager!)
         }))
         self.present(alert, animated: true, completion: nil)
     }

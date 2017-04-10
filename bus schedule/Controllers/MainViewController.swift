@@ -11,18 +11,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var btnSet: UIButton!
 
-    //var dataArray: [ScheduleItem] = []
-    var dataArray: [ScheduleItemRealm] = []
+    var dataArray: [UniversalDbModel] = []
     
     let cellId = "scheduleCell"
 
     let refreshControl = UIRefreshControl()
     
+    var dbManager: AbstractDbManager? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        //dataArray = CoreDataManager.instance.retrieveDataFromDb()
-        dataArray = RealmManager.instance.retrieveDataFromDb()
+        dbManager = CoreDataDbManager.instance
+        
+        dataArray = (dbManager?.retrieveDataFromDb())!
+        
         self.updateViews()
         initTableView()
         
@@ -30,8 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func reloadTableData(_ notification: Notification) {
-        //dataArray = CoreDataManager.instance.retrieveDataFromDb()
-        dataArray = RealmManager.instance.retrieveDataFromDb()
+        dataArray = (dbManager?.retrieveDataFromDb())!
         self.updateViews()
     }
     
@@ -47,11 +49,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             tableView.addSubview(self.refreshControl)
             refreshControl.isEnabled = true
             
-//            dateFrom.text = DateConverter.convertDateToString(date: dataArray.first?.from_date as! Date)
-//            dateTo.text = DateConverter.convertDateToString(date: dataArray.last?.to_date as! Date)
-            
-            dateFrom.text = DateConverter.convertDateToString(date: (dataArray.first?.fromDate)!)
-            dateTo.text = DateConverter.convertDateToString(date: (dataArray.last?.toDate)!)
+            dateFrom.text = DateConverter.convertDateToString(date: (dataArray.first?.getFromDate())!)
+            dateTo.text = DateConverter.convertDateToString(date: (dataArray.last?.getToDate())!)
             
             labelFrom.isHidden = false
             labelTo.isHidden = false
@@ -74,12 +73,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func handleRefresh(refreshControl: UIRefreshControl) {
         DispatchQueue.global(qos: .background).async {
-//            ApiManager.instance.loadData(listener: self, url: ApiManager.instance.createUrl(dateFrom: self.dataArray.first?.from_date as! Date, dateTo: self.dataArray.last?.from_date as! Date))
             
             DispatchQueue.main.async {
-                ApiManager.instance.loadData(listener: self,
-                                             url: ApiManager.instance.createUrl(
-                                                dateFrom: self.dataArray.first!.fromDate, dateTo: self.dataArray.last!.fromDate))
+                ApiManager.instance.loadData(listener: self, url: ApiManager.instance.createUrl(
+                    dateFrom: self.dataArray.first!.getFromDate(), dateTo: self.dataArray.last!.getToDate()), dbManager: self.dbManager!)
 
             }
             
@@ -137,15 +134,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let scheduleItem = dataArray[indexPath.row]
         
-//        cell.info.text = (scheduleItem.from_city?.name)! + " -> " + (scheduleItem.to_city?.name)!
-//        cell.fromDate.text = DateConverter.convertDateToString(date: scheduleItem.from_date as! Date)
-//        cell.toDate.text = DateConverter.convertDateToString(date: scheduleItem.to_date as! Date)
+        cell.info.text = (scheduleItem.getFromCityName()) + " -> " + (scheduleItem.getToCityName())
+        cell.fromDate.text = DateConverter.convertDateToString(date: scheduleItem.getFromDate())
+        cell.toDate.text = DateConverter.convertDateToString(date: scheduleItem.getToDate())
         
-        cell.info.text = (scheduleItem.fromCity?.name)! + " -> " + (scheduleItem.toCity?.name)!
-        cell.fromDate.text = DateConverter.convertDateToString(date: scheduleItem.fromDate)
-        cell.toDate.text = DateConverter.convertDateToString(date: scheduleItem.toDate)
-        
-        cell.price.text = String(scheduleItem.price)
+        cell.price.text = String(scheduleItem.getPrice())
         
         return cell
     }
@@ -154,7 +147,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if(segue.identifier == "detSeq") {
             let detailedVC = segue.destination as! DetailedViewController
             let selectedRow = tableView.indexPathForSelectedRow!.row
-            detailedVC.scheduleItem = dataArray[selectedRow]
+            detailedVC.model = dataArray[selectedRow]
+        }
+        if(segue.identifier == "setDate") {
+            let setDateVC = segue.destination as! SetDateViewController
+            setDateVC.dbManager = dbManager
         }
     }
 
