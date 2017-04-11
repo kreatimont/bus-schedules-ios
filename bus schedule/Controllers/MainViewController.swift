@@ -22,6 +22,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        //set onClickListener
+        let labelTabGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onLabelClick(tapGestureRecognizer:)))
+        labelTo.addGestureRecognizer(labelTabGestureRecognizer)
+        labelTo.isUserInteractionEnabled = true
+        
         //set current db manager
         dbManager = RealmDbManager.instance
         
@@ -33,6 +38,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableData(_:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
 
+    func onLabelClick(tapGestureRecognizer: UITapGestureRecognizer) {
+        
+        let tappedLabel = tapGestureRecognizer.view as! UILabel
+        
+        let alert = UIAlertController(title: "Label", message: "Label clicked\(tappedLabel.text)", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
+        
+    }
+    
     func reloadTableData(_ notification: Notification) {
         dataArray = (dbManager?.retrieveDataFromDb())!
         self.updateViews()
@@ -101,6 +117,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: Table view data source & delegate
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //self.shouldPerformSegue(withIdentifier: "embSeq", sender: self)
+        self.performSegue(withIdentifier: "insideSegue", sender: self)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         var numOfSection: Int = 0
         
@@ -145,14 +166,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("seq")
         if(segue.identifier == "detSeq") {
             let detailedVC = segue.destination as! DetailedViewController
             let selectedRow = tableView.indexPathForSelectedRow!.row
             detailedVC.model = dataArray[selectedRow]
+            
         }
         if(segue.identifier == "setDate") {
             let setDateVC = segue.destination as! SetDateViewController
             setDateVC.dbManager = dbManager
+        }
+        if(segue.identifier == "insideSegue") {
+            let childViewController = segue.destination as! DetailedViewController
+            if(tableView.indexPathForSelectedRow != nil) {
+                print("item selected")
+                let selectedRow = tableView.indexPathForSelectedRow!.row
+                childViewController.model = dataArray[selectedRow]
+            }
         }
     }
 

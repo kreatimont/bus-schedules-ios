@@ -19,8 +19,11 @@ class DetailedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpWithModel(model: model!)
-        
+        if(model != nil) {
+            setUpWithModel(model: model!)
+        } else {
+            showEmptyStub()
+        }
     }
     
     func setUpWithModel(model: AbstractScheduleItem) {
@@ -32,6 +35,26 @@ class DetailedViewController: UIViewController {
         price.text = String(describing: model.getPrice())
         fromInfo.text = model.getFromInfo()
         toInfo.text = model.getToInfo()
+    }
+    
+    func showEmptyStub() {
+        
+        self.fromCity.isHidden = true
+        self.toCity.isHidden = true
+        self.fromDate.isHidden = true
+        self.toDate.isHidden = true
+        self.info.isHidden = true
+        self.fromInfo.isHidden = true
+        self.toInfo.isHidden = true
+        self.price.isHidden = true
+        self.fromTime.isHidden = true
+        self.toTime.isHidden = true
+        
+        let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+        noDataLabel.text = "No data available"
+        noDataLabel.textColor = UIColor.black
+        noDataLabel.textAlignment = .center
+        self.view.addSubview(noDataLabel)
     }
     
 
