@@ -3,7 +3,7 @@ class DetailedViewController: UIViewController {
 
     //var scheduleItem: ScheduleItem? = nil
     var scheduleItem: ScheduleItemRealm? = nil
-    var model: UniversalDbModel? = nil
+    var model: AbstractScheduleItem? = nil
     
     
     @IBOutlet weak var fromCity: UILabel!
@@ -23,9 +23,9 @@ class DetailedViewController: UIViewController {
         
     }
     
-    func setUpWithModel(model: UniversalDbModel) {
-        fromCity.text = model.getFromCityName()
-        toCity.text = model.getToCityName()
+    func setUpWithModel(model: AbstractScheduleItem) {
+        fromCity.text = model.getFromCity().getName()
+        toCity.text = model.getToCity().getName()
         fromDate.text = DateConverter.convertDateToString(date: model.getFromDate())
         toDate.text = DateConverter.convertDateToString(date: model.getToDate())
         info.text = model.getInfo()

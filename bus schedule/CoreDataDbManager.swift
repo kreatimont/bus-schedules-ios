@@ -14,12 +14,12 @@ class CoreDataDbManager : AbstractDbManager {
     
     //MARK: db manager implementation
     
-    internal func retrieveDataFromDb() -> [UniversalDbModel] {
+    internal func retrieveDataFromDb() -> [AbstractScheduleItem] {
         do {
             let fetch: NSFetchRequest = ScheduleItem.fetchRequest()
             let sortDescriptor = NSSortDescriptor(key: "fromDate", ascending: true)
             fetch.sortDescriptors = [sortDescriptor]
-            return self.convertCoreDataList(coreDataList: try context.fetch(fetch))
+            return try context.fetch(fetch) as [AbstractScheduleItem]
         } catch let error as NSError {
             print("Data was not retrieved, error: \(error.localizedDescription)")
         }
@@ -44,13 +44,16 @@ class CoreDataDbManager : AbstractDbManager {
         }
     }
     
-    internal func getItemById(id: String) -> UniversalDbModel? {
+    internal func getItemById(id: String) -> AbstractScheduleItem? {
         do {
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ScheduleItem")
             fetchRequest.fetchLimit = 1
             fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-            let universalDataArray = self.convertCoreDataList(coreDataList: try context.fetch(fetchRequest) as! [ScheduleItem])
-            return universalDataArray[0]
+            
+            let items = try context.fetch(fetchRequest) as! [AbstractScheduleItem]
+            return items[0]
+//            let universalDataArray = self.convertCoreDataList(coreDataList: try context.fetch(fetchRequest) as! [ScheduleItem])
+//            return universalDataArray[0]
         } catch let error as NSError {
             print("Detailed obj was not loaded, error: \(error)")
         }
@@ -76,13 +79,15 @@ class CoreDataDbManager : AbstractDbManager {
                 if(items.count == 0) {
                     let newScheduleItem = NSEntityDescription.insertNewObject(forEntityName: "ScheduleItem", into: context)
                     
-                    newScheduleItem.setValue(String(describing: tmpData["id"]) , forKey: "id")
+                    newScheduleItem.setValue(tmpData["id"], forKey: "id")
                     newScheduleItem.setValue(tmpData["info"] as! String, forKey: "info")
                     newScheduleItem.setValue(tmpData["price"], forKey: "price")
                     newScheduleItem.setValue(DateConverter.convertStringToDate(string: tmpData["from_date"] as! String), forKey: "fromDate")
                     newScheduleItem.setValue(DateConverter.convertStringToDate(string: tmpData["to_date"] as! String), forKey: "toDate")
                     newScheduleItem.setValue(tmpData["from_info"], forKey: "fromInfo")
                     newScheduleItem.setValue(tmpData["to_info"], forKey: "toInfo")
+                    newScheduleItem.setValue(tmpData["bus_id"], forKey: "busId")
+                    newScheduleItem.setValue(tmpData["reservation_count"], forKey: "reservationCount")
                     
                     fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
                     idStr = String(describing: fromCity["name"])
@@ -128,27 +133,27 @@ class CoreDataDbManager : AbstractDbManager {
     
     //MARK: additional methods
     
-    func convertCoreDataList(coreDataList: [ScheduleItem]) -> [UniversalDbModel]{
-
-        var universalList = [UniversalDbModel]()
-        
-        for coreDataItem in coreDataList {
-            universalList.append(UniversalDbModel(withCoreDataModel: coreDataItem))
-        }
-        
-        return universalList
-    }
-    
-    func convertRealmList(realmList: [ScheduleItemRealm]) -> [UniversalDbModel]{
-        
-        var universalList = [UniversalDbModel]()
-        
-        for realmItem in realmList {
-            universalList.append(UniversalDbModel(withRealmModel: realmItem))
-        }
-        
-        return universalList
-    }
+//    func convertCoreDataList(coreDataList: [ScheduleItem]) -> [UniversalDbModel]{
+//        
+//        var universalList = [UniversalDbModel]()
+//        
+//        for coreDataItem in coreDataList {
+//            universalList.append(UniversalDbModel(withCoreDataModel: coreDataItem))
+//        }
+//        
+//        return universalList
+//    }
+//    
+//    func convertRealmList(realmList: [ScheduleItemRealm]) -> [UniversalDbModel]{
+//        
+//        var universalList = [UniversalDbModel]()
+//        
+//        for realmItem in realmList {
+//            universalList.append(UniversalDbModel(withRealmModel: realmItem))
+//        }
+//        
+//        return universalList
+//    }
     
     
 }

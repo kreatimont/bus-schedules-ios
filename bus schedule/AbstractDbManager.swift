@@ -1,11 +1,11 @@
 
 protocol AbstractDbManager {
     
-    func retrieveDataFromDb() -> [UniversalDbModel]
+    func retrieveDataFromDb() -> [AbstractScheduleItem]
     
     func clearDb()
     
-    func getItemById(id: String) -> UniversalDbModel?
+    func getItemById(id: String) -> AbstractScheduleItem?
     
     func saveJsonArrayToDb(data: NSArray)
     

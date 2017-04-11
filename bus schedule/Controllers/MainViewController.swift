@@ -11,7 +11,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var btnSet: UIButton!
 
-    var dataArray: [UniversalDbModel] = []
+    var dataArray: [AbstractScheduleItem] = []
     
     let cellId = "scheduleCell"
 
@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
     
         //set current db manager
-        dbManager = CoreDataDbManager.instance
+        dbManager = RealmDbManager.instance
         
         dataArray = (dbManager?.retrieveDataFromDb())!
         
@@ -135,7 +135,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let scheduleItem = dataArray[indexPath.row]
         
-        cell.info.text = (scheduleItem.getFromCityName()) + " -> " + (scheduleItem.getToCityName())
+        cell.info.text = (scheduleItem.getFromCity().getName()) + " -> " + (scheduleItem.getToCity().getName())
         cell.fromDate.text = DateConverter.convertDateToString(date: scheduleItem.getFromDate())
         cell.toDate.text = DateConverter.convertDateToString(date: scheduleItem.getToDate())
         

@@ -10,6 +10,15 @@ import Foundation
 import CoreData
 
 
-public class City: NSManagedObject {
+public class City: NSManagedObject, AbstractScheduleCity {
 
+    internal func getName() -> String {
+        return self.name!
+    }
+    
+    internal func getHighlight() -> Int {
+        return Int(self.highlight)
+    }
+    
+    
 }

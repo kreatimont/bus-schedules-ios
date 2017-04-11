@@ -1,7 +1,7 @@
 
 import RealmSwift
 
-class ScheduleItemRealm: Object {
+class ScheduleItemRealm: Object, AbstractScheduleItem {
     
     dynamic var id = 0
     
@@ -21,6 +21,52 @@ class ScheduleItemRealm: Object {
     
     override class func primaryKey() -> String {
         return "id"
+    }
+    
+    //MARK: AbstractModel implementation
+    
+    internal func getId() -> Int {
+        return self.id
+    }
+    
+    internal func getBusId() -> Int {
+        return self.busId
+    }
+    
+    internal func getPrice() -> Int {
+        return self.price
+    }
+    
+    internal func getReservationCount() -> Int {
+        return self.reservationCount
+    }
+    
+    internal func getInfo() -> String {
+        return self.info
+    }
+    
+    internal func getFromInfo() -> String {
+        return self.fromInfo
+    }
+    
+    internal func getToInfo() -> String {
+        return self.toInfo
+    }
+    
+    internal func getFromDate() -> Date {
+        return self.fromDate
+    }
+    
+    internal func getToDate() -> Date {
+        return self.toDate
+    }
+    
+    internal func getFromCity() -> AbstractScheduleCity {
+        return self.fromCity!
+    }
+    
+    internal func getToCity() -> AbstractScheduleCity {
+        return self.toCity!
     }
     
 }

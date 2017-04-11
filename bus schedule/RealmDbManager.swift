@@ -15,8 +15,9 @@ class RealmDbManager : AbstractDbManager {
     
     //MARK: db manager implementation
     
-    internal func retrieveDataFromDb() -> [UniversalDbModel] {
-        return convertRealmList(realmList: Array(realm.objects(ScheduleItemRealm.self).sorted(byKeyPath: "fromDate")))
+    internal func retrieveDataFromDb() -> [AbstractScheduleItem] {
+        return Array(realm.objects(ScheduleItemRealm.self))
+        //return convertRealmList(realmList: Array(realm.objects(ScheduleItemRealm.self).sorted(byKeyPath: "fromDate")))
     }
     
     internal func clearDb() {
@@ -25,8 +26,9 @@ class RealmDbManager : AbstractDbManager {
         }
     }
     
-    internal func getItemById(id: String) -> UniversalDbModel? {
-        return convertRealmList(realmList: Array(realm.objects(ScheduleItemRealm.self).filter("id == \(id)"))).first
+    internal func getItemById(id: String) -> AbstractScheduleItem? {
+        return Array(realm.objects(ScheduleItemRealm.self).filter("id == \(id)")).first
+        //return convertRealmList(realmList: Array(realm.objects(ScheduleItemRealm.self).filter("id == \(id)"))).first
     }
     
     internal func saveJsonArrayToDb(data: NSArray) {
@@ -89,16 +91,16 @@ class RealmDbManager : AbstractDbManager {
     
     //MARK: additional methods
     
-    func convertRealmList(realmList: [ScheduleItemRealm]) -> [UniversalDbModel]{
-        
-        var universalList = [UniversalDbModel]()
-        
-        for realmItem in realmList {
-            universalList.append(UniversalDbModel(withRealmModel: realmItem))
-        }
-        
-        return universalList
-    }
+//    func convertRealmList(realmList: [ScheduleItemRealm]) -> [UniversalDbModel]{
+//        
+//        var universalList = [UniversalDbModel]()
+//        
+//        for realmItem in realmList {
+//            universalList.append(UniversalDbModel(withRealmModel: realmItem))
+//        }
+//        
+//        return universalList
+//    }
     
     
 }

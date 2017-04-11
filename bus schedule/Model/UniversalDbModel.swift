@@ -1,50 +1,20 @@
 
-class UniversalDbModel {
+protocol UniversalDbModel {
     
-    let coreDataModel: ScheduleItem?
+    func getInfo() -> String;
     
-    let realmModel: ScheduleItemRealm?
+    func getFromInfo() -> String;
     
-    init(withRealmModel: ScheduleItemRealm) {
-        realmModel = withRealmModel
-        coreDataModel = nil
-    }
+    func getToInfo() -> String;
     
-    init(withCoreDataModel: ScheduleItem) {
-        coreDataModel = withCoreDataModel
-        realmModel = nil
-    }
- 
-    func getInfo() -> String {
-        return (realmModel != nil ? realmModel?.info : coreDataModel?.info)!
-    }
+    func getFromDate() -> Date;
     
-    func getFromInfo() -> String {
-        return (realmModel != nil ? realmModel?.fromInfo : coreDataModel?.fromInfo)!
-    }
+    func getToDate() -> Date;
     
-    func getToInfo() -> String {
-        return (realmModel != nil ? realmModel?.toInfo : coreDataModel?.toInfo)!
-    }
+    func getPrice() -> Int;
     
-    func getFromDate() -> Date {
-        return (realmModel != nil ? realmModel?.fromDate : (coreDataModel?.fromDate as! Date))!
-    }
+    func getFromCityName() -> String;
     
-    func getToDate() -> Date {
-        return (realmModel != nil ? realmModel?.toDate : (coreDataModel?.toDate as! Date))!
-    }
-    
-    func getPrice() -> Int {
-        return (realmModel != nil ? realmModel?.price : Int((coreDataModel?.price)!))!
-    }
-    
-    func getFromCityName() -> String {
-        return (realmModel != nil ? realmModel?.fromCity?.name : coreDataModel?.fromCity?.name)!
-    }
-    
-    func getToCityName() -> String {
-        return (realmModel != nil ? realmModel?.toCity?.name : coreDataModel?.toCity?.name)!
-    }
+    func getToCityName() -> String;
     
 }

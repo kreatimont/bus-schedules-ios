@@ -11,6 +11,8 @@
 		054D128D1E97C5A0005D3A06 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 054D128B1E97C5A0005D3A06 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		054D128F1E97C5A5005D3A06 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 054D128E1E97C5A5005D3A06 /* RealmSwift.framework */; };
 		054D12901E97C5A5005D3A06 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 054D128E1E97C5A5005D3A06 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		057F12931E9CED2E0055E4FB /* AbstractScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */; };
+		057F12951E9CED7F0055E4FB /* AbstractScheduleCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F12941E9CED7F0055E4FB /* AbstractScheduleCity.swift */; };
 		059FCFB31E9BB62D00494966 /* ScheduleCityRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFB11E9BB62D00494966 /* ScheduleCityRealm.swift */; };
 		059FCFB41E9BB62D00494966 /* ScheduleItemRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFB21E9BB62D00494966 /* ScheduleItemRealm.swift */; };
 		059FCFB61E9BB69400494966 /* UniversalDbModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFB51E9BB69400494966 /* UniversalDbModel.swift */; };
@@ -54,6 +56,8 @@
 /* Begin PBXFileReference section */
 		054D128B1E97C5A0005D3A06 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		054D128E1E97C5A5005D3A06 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractScheduleItem.swift; path = "bus schedule/Model/AbstractScheduleItem.swift"; sourceTree = "<group>"; };
+		057F12941E9CED7F0055E4FB /* AbstractScheduleCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractScheduleCity.swift; path = "bus schedule/Model/AbstractScheduleCity.swift"; sourceTree = "<group>"; };
 		059FCFB11E9BB62D00494966 /* ScheduleCityRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleCityRealm.swift; path = "bus schedule/Model/ScheduleCityRealm.swift"; sourceTree = "<group>"; };
 		059FCFB21E9BB62D00494966 /* ScheduleItemRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleItemRealm.swift; path = "bus schedule/Model/ScheduleItemRealm.swift"; sourceTree = "<group>"; };
 		059FCFB51E9BB69400494966 /* UniversalDbModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalDbModel.swift; path = "bus schedule/Model/UniversalDbModel.swift"; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				059FCFB11E9BB62D00494966 /* ScheduleCityRealm.swift */,
 				059FCFB21E9BB62D00494966 /* ScheduleItemRealm.swift */,
 				059FCFB51E9BB69400494966 /* UniversalDbModel.swift */,
+				057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */,
+				057F12941E9CED7F0055E4FB /* AbstractScheduleCity.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -328,8 +334,10 @@
 				059FCFB81E9BB94000494966 /* CoreDataDbManager.swift in Sources */,
 				05A064331E9295EF001F729D /* ApiListener.swift in Sources */,
 				841EB8FE1E841EEF007AE710 /* bus_schedule.xcdatamodeld in Sources */,
+				057F12951E9CED7F0055E4FB /* AbstractScheduleCity.swift in Sources */,
 				059FCFF31E9BD3A800494966 /* City+CoreDataClass.swift in Sources */,
 				059FCFB31E9BB62D00494966 /* ScheduleCityRealm.swift in Sources */,
+				057F12931E9CED2E0055E4FB /* AbstractScheduleItem.swift in Sources */,
 				05A0642F1E928692001F729D /* ApiManager.swift in Sources */,
 				059FCFBA1E9BC0D900494966 /* AbstractDbManager.swift in Sources */,
 				059FCFB61E9BB69400494966 /* UniversalDbModel.swift in Sources */,

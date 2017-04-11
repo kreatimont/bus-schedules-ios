@@ -1,9 +1,26 @@
-//
-//  AbstractScheduleItem.swift
-//  bus schedule
-//
-//  Created by Alexandr Nadtoka on 4/11/17.
-//  Copyright © 2017 admin. All rights reserved.
-//
 
-import Foundation
+protocol AbstractScheduleItem {
+    
+    func getId() -> Int
+    
+    func getBusId() -> Int
+    
+    func getPrice() -> Int
+    
+    func getReservationCount() -> Int
+    
+    func getInfo() -> String
+    
+    func getFromInfo() -> String
+    
+    func getToInfo() -> String
+    
+    func getFromDate() -> Date
+    
+    func getToDate() -> Date
+    
+    func getFromCity() -> AbstractScheduleCity
+    
+    func getToCity() -> AbstractScheduleCity
+
+}
