@@ -1,5 +1,6 @@
 
 Pods/
+.idea/
 .DS_Store
 .svn
 *~
