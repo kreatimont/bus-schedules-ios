@@ -1,11 +1,8 @@
 
 class DetailedViewController: UIViewController {
 
-    //var scheduleItem: ScheduleItem? = nil
-    var scheduleItem: ScheduleItemRealm? = nil
     var model: AbstractScheduleItem? = nil
-    
-    
+        
     @IBOutlet weak var fromCity: UILabel!
     @IBOutlet weak var toCity: UILabel!
     @IBOutlet weak var fromDate: UILabel!
@@ -22,7 +19,7 @@ class DetailedViewController: UIViewController {
         if(model != nil) {
             setUpWithModel(model: model!)
         } else {
-            showEmptyStub()
+//            showEmptyStub()
         }
     }
     

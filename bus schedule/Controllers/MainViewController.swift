@@ -118,8 +118,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: Table view data source & delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //self.shouldPerformSegue(withIdentifier: "embSeq", sender: self)
-        self.performSegue(withIdentifier: "insideSegue", sender: self)
+        (self.childViewControllers as! [DetailedViewController])[0].setUpWithModel(model: dataArray[indexPath.row])
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -166,7 +165,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("seq")
         if(segue.identifier == "detSeq") {
             let detailedVC = segue.destination as! DetailedViewController
             let selectedRow = tableView.indexPathForSelectedRow!.row
@@ -176,14 +174,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if(segue.identifier == "setDate") {
             let setDateVC = segue.destination as! SetDateViewController
             setDateVC.dbManager = dbManager
-        }
-        if(segue.identifier == "insideSegue") {
-            let childViewController = segue.destination as! DetailedViewController
-            if(tableView.indexPathForSelectedRow != nil) {
-                print("item selected")
-                let selectedRow = tableView.indexPathForSelectedRow!.row
-                childViewController.model = dataArray[selectedRow]
-            }
         }
     }
 
