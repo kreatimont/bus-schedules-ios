@@ -14,18 +14,18 @@
 		057F12931E9CED2E0055E4FB /* AbstractScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */; };
 		057F12951E9CED7F0055E4FB /* AbstractScheduleCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F12941E9CED7F0055E4FB /* AbstractScheduleCity.swift */; };
 		057F12981E9D0A520055E4FB /* Main_ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057F12961E9D0A520055E4FB /* Main_ipad.storyboard */; };
+		058B43FA1E9D77FA0067AD16 /* AbstractDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058B43F71E9D77FA0067AD16 /* AbstractDbManager.swift */; };
+		058B43FB1E9D77FA0067AD16 /* CoreDataDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058B43F81E9D77FA0067AD16 /* CoreDataDbManager.swift */; };
+		058B43FC1E9D77FA0067AD16 /* RealmDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058B43F91E9D77FA0067AD16 /* RealmDbManager.swift */; };
+		058B43FF1E9D78500067AD16 /* ApiListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058B43FD1E9D78500067AD16 /* ApiListener.swift */; };
+		058B44001E9D78500067AD16 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058B43FE1E9D78500067AD16 /* ApiManager.swift */; };
+		058B44031E9D78CE0067AD16 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058B44021E9D78CE0067AD16 /* DateConverter.swift */; };
 		059FCFB31E9BB62D00494966 /* ScheduleCityRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFB11E9BB62D00494966 /* ScheduleCityRealm.swift */; };
 		059FCFB41E9BB62D00494966 /* ScheduleItemRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFB21E9BB62D00494966 /* ScheduleItemRealm.swift */; };
-		059FCFB61E9BB69400494966 /* UniversalDbModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFB51E9BB69400494966 /* UniversalDbModel.swift */; };
-		059FCFB81E9BB94000494966 /* CoreDataDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFB71E9BB94000494966 /* CoreDataDbManager.swift */; };
-		059FCFBA1E9BC0D900494966 /* AbstractDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFB91E9BC0D900494966 /* AbstractDbManager.swift */; };
-		059FCFBC1E9BCA9A00494966 /* RealmDbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFBB1E9BCA9900494966 /* RealmDbManager.swift */; };
 		059FCFF11E9BD3A800494966 /* ScheduleItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFED1E9BD3A800494966 /* ScheduleItem+CoreDataClass.swift */; };
 		059FCFF21E9BD3A800494966 /* ScheduleItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFEE1E9BD3A800494966 /* ScheduleItem+CoreDataProperties.swift */; };
 		059FCFF31E9BD3A800494966 /* City+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFEF1E9BD3A800494966 /* City+CoreDataClass.swift */; };
 		059FCFF41E9BD3A800494966 /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFF01E9BD3A800494966 /* City+CoreDataProperties.swift */; };
-		05A0642F1E928692001F729D /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0642E1E928692001F729D /* ApiManager.swift */; };
-		05A064331E9295EF001F729D /* ApiListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A064321E9295EF001F729D /* ApiListener.swift */; };
 		840FA6331E8942F200B8A80E /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA6321E8942F200B8A80E /* ScheduleCell.swift */; };
 		841EB8F61E841EEE007AE710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EB8F51E841EEE007AE710 /* AppDelegate.swift */; };
 		841EB8FB1E841EEF007AE710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841EB8F91E841EEF007AE710 /* Main.storyboard */; };
@@ -35,7 +35,6 @@
 		84F95CC01E8D59BA00658A7F /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBD1E8D59BA00658A7F /* DetailedViewController.swift */; };
 		84F95CC11E8D59BA00658A7F /* SetDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBE1E8D59BA00658A7F /* SetDateViewController.swift */; };
 		84F95CC21E8D59BA00658A7F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F95CBF1E8D59BA00658A7F /* MainViewController.swift */; };
-		84FE585D1E8BB48F007B300F /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE585C1E8BB48F007B300F /* DateConverter.swift */; };
 		BF192925BD406188E5BC7B34 /* Pods_bus_schedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE91F4A08AD9007A19C7CF27 /* Pods_bus_schedule.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,21 +59,21 @@
 		057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractScheduleItem.swift; path = "bus schedule/Model/AbstractScheduleItem.swift"; sourceTree = "<group>"; };
 		057F12941E9CED7F0055E4FB /* AbstractScheduleCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractScheduleCity.swift; path = "bus schedule/Model/AbstractScheduleCity.swift"; sourceTree = "<group>"; };
 		057F12971E9D0A520055E4FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_ipad.storyboard; sourceTree = "<group>"; };
+		058B43F71E9D77FA0067AD16 /* AbstractDbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractDbManager.swift; path = "bus schedule/DataBase/AbstractDbManager.swift"; sourceTree = "<group>"; };
+		058B43F81E9D77FA0067AD16 /* CoreDataDbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataDbManager.swift; path = "bus schedule/DataBase/CoreDataDbManager.swift"; sourceTree = "<group>"; };
+		058B43F91E9D77FA0067AD16 /* RealmDbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmDbManager.swift; path = "bus schedule/DataBase/RealmDbManager.swift"; sourceTree = "<group>"; };
+		058B43FD1E9D78500067AD16 /* ApiListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiListener.swift; path = "bus schedule/Api/ApiListener.swift"; sourceTree = "<group>"; };
+		058B43FE1E9D78500067AD16 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiManager.swift; path = "bus schedule/Api/ApiManager.swift"; sourceTree = "<group>"; };
+		058B44021E9D78CE0067AD16 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateConverter.swift; path = "bus schedule/Utils/DateConverter.swift"; sourceTree = "<group>"; };
 		059FCFB11E9BB62D00494966 /* ScheduleCityRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleCityRealm.swift; path = "bus schedule/Model/ScheduleCityRealm.swift"; sourceTree = "<group>"; };
 		059FCFB21E9BB62D00494966 /* ScheduleItemRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleItemRealm.swift; path = "bus schedule/Model/ScheduleItemRealm.swift"; sourceTree = "<group>"; };
-		059FCFB51E9BB69400494966 /* UniversalDbModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalDbModel.swift; path = "bus schedule/Model/UniversalDbModel.swift"; sourceTree = "<group>"; };
-		059FCFB71E9BB94000494966 /* CoreDataDbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataDbManager.swift; path = "bus schedule/CoreDataDbManager.swift"; sourceTree = "<group>"; };
-		059FCFB91E9BC0D900494966 /* AbstractDbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractDbManager.swift; path = "bus schedule/AbstractDbManager.swift"; sourceTree = "<group>"; };
-		059FCFBB1E9BCA9900494966 /* RealmDbManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmDbManager.swift; path = "bus schedule/RealmDbManager.swift"; sourceTree = "<group>"; };
 		059FCFED1E9BD3A800494966 /* ScheduleItem+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ScheduleItem+CoreDataClass.swift"; path = "bus schedule/Model/ScheduleItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		059FCFEE1E9BD3A800494966 /* ScheduleItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ScheduleItem+CoreDataProperties.swift"; path = "bus schedule/Model/ScheduleItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		059FCFEF1E9BD3A800494966 /* City+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "City+CoreDataClass.swift"; path = "bus schedule/Model/City+CoreDataClass.swift"; sourceTree = "<group>"; };
 		059FCFF01E9BD3A800494966 /* City+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "City+CoreDataProperties.swift"; path = "bus schedule/Model/City+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		05A0642E1E928692001F729D /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
-		05A064321E9295EF001F729D /* ApiListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiListener.swift; sourceTree = "<group>"; };
 		30153C863FA09129DCCE900A /* Pods-bus schedule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bus schedule.release.xcconfig"; path = "Pods/Target Support Files/Pods-bus schedule/Pods-bus schedule.release.xcconfig"; sourceTree = "<group>"; };
 		6AE99E278E630BED643C62B7 /* Pods-bus schedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bus schedule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bus schedule/Pods-bus schedule.debug.xcconfig"; sourceTree = "<group>"; };
-		840FA6321E8942F200B8A80E /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		840FA6321E8942F200B8A80E /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleCell.swift; path = "bus schedule/ScheduleCell.swift"; sourceTree = "<group>"; };
 		841EB8F21E841EEE007AE710 /* bus schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bus schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		841EB8F51E841EEE007AE710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		841EB8FA1E841EEF007AE710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,7 +85,6 @@
 		84F95CBD1E8D59BA00658A7F /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailedViewController.swift; path = Controllers/DetailedViewController.swift; sourceTree = "<group>"; };
 		84F95CBE1E8D59BA00658A7F /* SetDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetDateViewController.swift; path = Controllers/SetDateViewController.swift; sourceTree = "<group>"; };
 		84F95CBF1E8D59BA00658A7F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controllers/MainViewController.swift; sourceTree = "<group>"; };
-		84FE585C1E8BB48F007B300F /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateConverter.swift; path = "bus schedule/DateConverter.swift"; sourceTree = "<group>"; };
 		BE91F4A08AD9007A19C7CF27 /* Pods_bus_schedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bus_schedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -107,25 +105,57 @@
 		054D12911E97C5C1005D3A06 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				059FCFED1E9BD3A800494966 /* ScheduleItem+CoreDataClass.swift */,
-				059FCFEE1E9BD3A800494966 /* ScheduleItem+CoreDataProperties.swift */,
-				059FCFEF1E9BD3A800494966 /* City+CoreDataClass.swift */,
-				059FCFF01E9BD3A800494966 /* City+CoreDataProperties.swift */,
-				059FCFB11E9BB62D00494966 /* ScheduleCityRealm.swift */,
-				059FCFB21E9BB62D00494966 /* ScheduleItemRealm.swift */,
-				059FCFB51E9BB69400494966 /* UniversalDbModel.swift */,
+				058B44051E9D7E200067AD16 /* core_data */,
+				058B44041E9D7E120067AD16 /* realm */,
 				057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */,
 				057F12941E9CED7F0055E4FB /* AbstractScheduleCity.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
 		};
+		058B43F61E9D76CE0067AD16 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				840FA6321E8942F200B8A80E /* ScheduleCell.swift */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
+		058B44011E9D78AF0067AD16 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				058B44021E9D78CE0067AD16 /* DateConverter.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		058B44041E9D7E120067AD16 /* realm */ = {
+			isa = PBXGroup;
+			children = (
+				059FCFB21E9BB62D00494966 /* ScheduleItemRealm.swift */,
+				059FCFB11E9BB62D00494966 /* ScheduleCityRealm.swift */,
+			);
+			name = realm;
+			sourceTree = "<group>";
+		};
+		058B44051E9D7E200067AD16 /* core_data */ = {
+			isa = PBXGroup;
+			children = (
+				059FCFEE1E9BD3A800494966 /* ScheduleItem+CoreDataProperties.swift */,
+				059FCFED1E9BD3A800494966 /* ScheduleItem+CoreDataClass.swift */,
+				059FCFEF1E9BD3A800494966 /* City+CoreDataClass.swift */,
+				059FCFF01E9BD3A800494966 /* City+CoreDataProperties.swift */,
+			);
+			name = core_data;
+			sourceTree = "<group>";
+		};
 		05A0642C1E928664001F729D /* db */ = {
 			isa = PBXGroup;
 			children = (
-				059FCFB71E9BB94000494966 /* CoreDataDbManager.swift */,
-				059FCFB91E9BC0D900494966 /* AbstractDbManager.swift */,
-				059FCFBB1E9BCA9900494966 /* RealmDbManager.swift */,
+				058B43F71E9D77FA0067AD16 /* AbstractDbManager.swift */,
+				058B43F81E9D77FA0067AD16 /* CoreDataDbManager.swift */,
+				058B43F91E9D77FA0067AD16 /* RealmDbManager.swift */,
+				841EB8FC1E841EEF007AE710 /* bus_schedule.xcdatamodeld */,
 			);
 			name = db;
 			sourceTree = "<group>";
@@ -133,9 +163,8 @@
 		05A0642D1E928675001F729D /* api */ = {
 			isa = PBXGroup;
 			children = (
-				05A064321E9295EF001F729D /* ApiListener.swift */,
-				05A0642E1E928692001F729D /* ApiManager.swift */,
-				84FE585C1E8BB48F007B300F /* DateConverter.swift */,
+				058B43FD1E9D78500067AD16 /* ApiListener.swift */,
+				058B43FE1E9D78500067AD16 /* ApiManager.swift */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -157,7 +186,9 @@
 				054D12911E97C5C1005D3A06 /* model */,
 				05A0642D1E928675001F729D /* api */,
 				05A0642C1E928664001F729D /* db */,
+				058B43F61E9D76CE0067AD16 /* cells */,
 				84F95CB01E8D550D00658A7F /* controllers */,
+				058B44011E9D78AF0067AD16 /* utils */,
 				841EB8F41E841EEE007AE710 /* bus_schedule */,
 				841EB8F31E841EEE007AE710 /* Products */,
 				682FB63587385967A0BB98BC /* Pods */,
@@ -178,12 +209,10 @@
 			children = (
 				84F12BCF1E854F270082FB6C /* BusSchedule-Bridging-Header.h */,
 				841EB8F51E841EEE007AE710 /* AppDelegate.swift */,
-				840FA6321E8942F200B8A80E /* ScheduleCell.swift */,
 				841EB8F91E841EEF007AE710 /* Main.storyboard */,
 				057F12961E9D0A520055E4FB /* Main_ipad.storyboard */,
 				841EB9011E841EEF007AE710 /* LaunchScreen.storyboard */,
 				841EB9041E841EEF007AE710 /* Info.plist */,
-				841EB8FC1E841EEF007AE710 /* bus_schedule.xcdatamodeld */,
 				841EB8FF1E841EEF007AE710 /* Assets.xcassets */,
 			);
 			name = bus_schedule;
@@ -335,24 +364,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				059FCFB81E9BB94000494966 /* CoreDataDbManager.swift in Sources */,
-				05A064331E9295EF001F729D /* ApiListener.swift in Sources */,
+				058B43FF1E9D78500067AD16 /* ApiListener.swift in Sources */,
 				841EB8FE1E841EEF007AE710 /* bus_schedule.xcdatamodeld in Sources */,
 				057F12951E9CED7F0055E4FB /* AbstractScheduleCity.swift in Sources */,
 				059FCFF31E9BD3A800494966 /* City+CoreDataClass.swift in Sources */,
 				059FCFB31E9BB62D00494966 /* ScheduleCityRealm.swift in Sources */,
 				057F12931E9CED2E0055E4FB /* AbstractScheduleItem.swift in Sources */,
-				05A0642F1E928692001F729D /* ApiManager.swift in Sources */,
-				059FCFBA1E9BC0D900494966 /* AbstractDbManager.swift in Sources */,
-				059FCFB61E9BB69400494966 /* UniversalDbModel.swift in Sources */,
-				84FE585D1E8BB48F007B300F /* DateConverter.swift in Sources */,
+				058B43FB1E9D77FA0067AD16 /* CoreDataDbManager.swift in Sources */,
 				84F95CC01E8D59BA00658A7F /* DetailedViewController.swift in Sources */,
+				058B44001E9D78500067AD16 /* ApiManager.swift in Sources */,
 				84F95CC11E8D59BA00658A7F /* SetDateViewController.swift in Sources */,
 				84F95CC21E8D59BA00658A7F /* MainViewController.swift in Sources */,
+				058B43FA1E9D77FA0067AD16 /* AbstractDbManager.swift in Sources */,
 				841EB8F61E841EEE007AE710 /* AppDelegate.swift in Sources */,
+				058B44031E9D78CE0067AD16 /* DateConverter.swift in Sources */,
 				059FCFF21E9BD3A800494966 /* ScheduleItem+CoreDataProperties.swift in Sources */,
+				058B43FC1E9D77FA0067AD16 /* RealmDbManager.swift in Sources */,
 				059FCFF41E9BD3A800494966 /* City+CoreDataProperties.swift in Sources */,
-				059FCFBC1E9BCA9A00494966 /* RealmDbManager.swift in Sources */,
 				059FCFB41E9BB62D00494966 /* ScheduleItemRealm.swift in Sources */,
 				059FCFF11E9BD3A800494966 /* ScheduleItem+CoreDataClass.swift in Sources */,
 				840FA6331E8942F200B8A80E /* ScheduleCell.swift in Sources */,
@@ -555,7 +583,8 @@
 				841EB8FD1E841EEF007AE710 /* bus_schedule.xcdatamodel */,
 			);
 			currentVersion = 841EB8FD1E841EEF007AE710 /* bus_schedule.xcdatamodel */;
-			path = bus_schedule.xcdatamodeld;
+			name = bus_schedule.xcdatamodeld;
+			path = "bus schedule/bus_schedule.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

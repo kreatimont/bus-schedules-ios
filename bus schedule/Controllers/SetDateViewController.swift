@@ -10,8 +10,6 @@ class SetDateViewController: UIViewController, ApiListener {
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
     
-    var loadedData: [UniversalDbModel] = []
-    
     var dbManager: AbstractDbManager? = nil
     
     override func viewDidLoad() {

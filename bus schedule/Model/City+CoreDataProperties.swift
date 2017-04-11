@@ -2,7 +2,7 @@
 //  City+CoreDataProperties.swift
 //  bus schedule
 //
-//  Created by Alexandr Nadtoka on 4/11/17.
+//  Created by kreatimont on 12/04/2017.
 //  Copyright © 2017 admin. All rights reserved.
 //
 

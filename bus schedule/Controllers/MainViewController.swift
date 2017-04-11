@@ -31,7 +31,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         dbManager = RealmDbManager.instance
         
         dataArray = (dbManager?.retrieveDataFromDb())!
-        
         self.updateViews()
         initTableView()
         
@@ -118,7 +117,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: Table view data source & delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        (self.childViewControllers as! [DetailedViewController])[0].setUpWithModel(model: dataArray[indexPath.row])
+        if(UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
+           (self.childViewControllers as! [DetailedViewController])[0].setUpWithModel(model: dataArray[indexPath.row])
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

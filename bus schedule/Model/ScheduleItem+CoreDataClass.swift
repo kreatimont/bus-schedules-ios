@@ -13,7 +13,7 @@ import CoreData
 public class ScheduleItem: NSManagedObject, AbstractScheduleItem {
     
     internal func getId() -> Int {
-        return Int(self.id!)!
+        return Int(self.id)
     }
     
     internal func getBusId() -> Int {

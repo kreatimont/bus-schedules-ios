@@ -17,10 +17,7 @@ class ApiManager {
                         
                         let responseData = responseObject as! NSDictionary
                         if(responseData["success"] != nil) {
-                            
                             dbManager.saveJsonArrayToDb(data: responseData["data"] as! NSArray)
-                            print("Items loaded")
-                            
                             listener.success()
                         } else {
                             listener.parseError()
