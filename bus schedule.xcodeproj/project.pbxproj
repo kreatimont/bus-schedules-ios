@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		054D128C1E97C5A0005D3A06 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 054D128B1E97C5A0005D3A06 /* Realm.framework */; };
-		054D128D1E97C5A0005D3A06 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 054D128B1E97C5A0005D3A06 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		054D128F1E97C5A5005D3A06 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 054D128E1E97C5A5005D3A06 /* RealmSwift.framework */; };
-		054D12901E97C5A5005D3A06 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 054D128E1E97C5A5005D3A06 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		057F12931E9CED2E0055E4FB /* AbstractScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */; };
 		057F12951E9CED7F0055E4FB /* AbstractScheduleCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F12941E9CED7F0055E4FB /* AbstractScheduleCity.swift */; };
 		057F12981E9D0A520055E4FB /* Main_ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057F12961E9D0A520055E4FB /* Main_ipad.storyboard */; };
@@ -45,8 +41,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				054D12901E97C5A5005D3A06 /* RealmSwift.framework in Embed Frameworks */,
-				054D128D1E97C5A0005D3A06 /* Realm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,8 +48,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		054D128B1E97C5A0005D3A06 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		054D128E1E97C5A5005D3A06 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractScheduleItem.swift; path = "bus schedule/Model/AbstractScheduleItem.swift"; sourceTree = "<group>"; };
 		057F12941E9CED7F0055E4FB /* AbstractScheduleCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractScheduleCity.swift; path = "bus schedule/Model/AbstractScheduleCity.swift"; sourceTree = "<group>"; };
 		057F12971E9D0A520055E4FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_ipad.storyboard; sourceTree = "<group>"; };
@@ -93,9 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				054D128C1E97C5A0005D3A06 /* Realm.framework in Frameworks */,
 				BF192925BD406188E5BC7B34 /* Pods_bus_schedule.framework in Frameworks */,
-				054D128F1E97C5A5005D3A06 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,8 +171,6 @@
 		841EB8E91E841EED007AE710 = {
 			isa = PBXGroup;
 			children = (
-				054D128E1E97C5A5005D3A06 /* RealmSwift.framework */,
-				054D128B1E97C5A0005D3A06 /* Realm.framework */,
 				054D12911E97C5C1005D3A06 /* model */,
 				05A0642D1E928675001F729D /* api */,
 				05A0642C1E928664001F729D /* db */,
