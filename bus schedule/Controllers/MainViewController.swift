@@ -25,13 +25,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var dbManager: AbstractDbManager? = nil
     
+    let panGesutureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onLabelDragged(recognizer:)))
+    
+    let tabGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onLabelClick(recognizer:)))
+
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        //set onClickListener
-        let labelTabGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onLabelClick(tapGestureRecognizer:)))
-        labelTo.addGestureRecognizer(labelTabGestureRecognizer)
+        //set onClickListener (Tab gesture)
+        labelTo.addGestureRecognizer(tabGestureRecognizer)
         labelTo.isUserInteractionEnabled = true
+        
+        //set dragListener (Pan gesture)
+        btnSet.addGestureRecognizer(panGesutureRecognizer)
         
         //set current db manager
         dbManager = RealmDbManager.instance
@@ -42,10 +48,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableData(_:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
+    
+    func onLabelDragged(recognizer: UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: self.view)
+        if let view = recognizer.view {
+            view.center = CGPoint(x:view.center.x + translation.x,
+                                  y:view.center.y + translation.y)
+        }
+        recognizer.setTranslation(CGPoint.zero, in: self.view)
+    }
 
-    func onLabelClick(tapGestureRecognizer: UITapGestureRecognizer) {
+    func onLabelClick(recognizer: UITapGestureRecognizer) {
         
-        let tappedLabel = tapGestureRecognizer.view as! UILabel
+        let tappedLabel = recognizer.view as! UILabel
         
         let alert = UIAlertController(title: "Label", message: "Label clicked\(tappedLabel.text)", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
@@ -161,6 +176,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.layer.borderColor = UIColor.lightGray.cgColor
         
         let scheduleItem = dataArray[indexPath.row]
+        
+        cell.addGestureRecognizer(panGesutureRecognizer)
         
         cell.info.text = (scheduleItem.getFromCity().getName()) + " -> " + (scheduleItem.getToCity().getName())
         cell.fromDate.text = DateConverter.convertDateToString(date: scheduleItem.getFromDate())
