@@ -20,6 +20,9 @@ class ApiManager {
                             
                             dbManager.saveJsonArrayToDb(data: responseData["data"] as! NSArray)
                             
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+                            _ = vc.navigationController?.popToRootViewController(animated: true)
+                            
                             listener.success()
                         } else {
                             let alert = UIAlertController(title: "Error", message: "Response isn`t success", preferredStyle: UIAlertControllerStyle.alert)
@@ -28,8 +31,14 @@ class ApiManager {
                         }
                         
         }, failure: { (operation, error) in
-            /*Show error message*/
-            listener.connectionError(error: error as NSError, url: url)
+            let alert = UIAlertController(title: "error_title".localized, message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "cancel_btn".localized, style: UIAlertActionStyle.cancel, handler: { action  in
+                listener.success()
+            }))
+            alert.addAction(UIAlertAction(title: "try_again_btn".localized, style: UIAlertActionStyle.default, handler: { action in
+                ApiManager.instance.loadData(listener: listener, url: url, dbManager: dbManager, vc: vc)
+            }))
+            vc.present(alert, animated: true, completion: nil)
         })
     }
     

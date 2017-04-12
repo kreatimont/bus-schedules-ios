@@ -57,26 +57,15 @@ class SetDateViewController: UIViewController, ApiListener {
     //MARK: api listener implementation 
     
     internal func success() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
-        _ = self.navigationController?.popToRootViewController(animated: true)
         isLoaderStub(state: false)
     }
     
     internal func parseError() {
         isLoaderStub(state: false)
-        let alert = UIAlertController(title: "Error", message: "Response isn`t success", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
     internal func connectionError(error: NSError, url: String) {
         isLoaderStub(state: false)
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Try again", style: UIAlertActionStyle.default, handler: { action in
-            ApiManager.instance.loadData(listener: self, url: url, dbManager: self.dbManager!, vc: self)
-        }))
-        self.present(alert, animated: true, completion: nil)
     }
     
 }
