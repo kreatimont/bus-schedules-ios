@@ -5,6 +5,16 @@ extension String {
     }
 }
 
+extension UIColor{
+    class func getCustomBlueColor() -> UIColor{
+        return UIColor(red:0.86, green:0.73, blue:1.00, alpha:1.0)
+    }
+    
+    class func getCustomGreenColor() -> UIColor{
+        return UIColor(red: 0.80, green:0.95, blue:0.90 ,alpha:1.0)
+    }
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
     
     @IBOutlet weak var labelTo: UILabel!
@@ -17,6 +27,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var btnSet: UIButton!
 
+    @IBOutlet weak var containerView: UIView!
+    
     var dataArray: [AbstractScheduleItem] = []
     
     let cellId = "scheduleCell"
@@ -25,22 +37,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var dbManager: AbstractDbManager? = nil
     
-    let panGesutureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onLabelDragged(recognizer:)))
     
-    let tabGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onLabelClick(recognizer:)))
-
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        //setUp container view
+        if(containerView != nil) {
+            containerView.isHidden = true
+            containerView.layer.cornerRadius = 6.0
+            containerView.layer.borderWidth = 1.0
+            containerView.layer.borderColor = UIColor.lightGray.cgColor
+        }
+        
+        let panGesutureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onLabelDragged(recognizer:)))
+        
+        let tabGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onLabelClick(recognizer:)))
+
+        
         //set onClickListener (Tab gesture)
         labelTo.addGestureRecognizer(tabGestureRecognizer)
         labelTo.isUserInteractionEnabled = true
         
         //set dragListener (Pan gesture)
         btnSet.addGestureRecognizer(panGesutureRecognizer)
+        btnSet.isUserInteractionEnabled = true
         
         //set current db manager
-        dbManager = RealmDbManager.instance
+        dbManager = CoreDataDbManager.instance
         
         dataArray = (dbManager?.retrieveDataFromDb())!
         self.updateViews()
@@ -59,7 +82,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func onLabelClick(recognizer: UITapGestureRecognizer) {
-        
         let tappedLabel = recognizer.view as! UILabel
         
         let alert = UIAlertController(title: "Label", message: "Label clicked\(tappedLabel.text)", preferredStyle: UIAlertControllerStyle.alert)
@@ -152,6 +174,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
            (self.childViewControllers as! [DetailedViewController])[0].setUpWithModel(model: dataArray[indexPath.row])
+            containerView.isHidden = false
         }
     }
     
@@ -187,9 +210,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor
         
-        let scheduleItem = dataArray[indexPath.row]
+        if(indexPath.row % 2 == 0) {
+            cell.contentView.backgroundColor = UIColor.getCustomBlueColor()
+        } else {
+            cell.contentView.backgroundColor = UIColor.getCustomGreenColor()
+        }
         
-        cell.addGestureRecognizer(panGesutureRecognizer)
+        let scheduleItem = dataArray[indexPath.row]
         
         cell.info.text = (scheduleItem.getFromCity().getName()) + " -> " + (scheduleItem.getToCity().getName())
         cell.fromDate.text = DateConverter.convertDateToString(date: scheduleItem.getFromDate())

@@ -10,18 +10,6 @@ class CoreDataDbManager : AbstractDbManager {
     init() {
         self.context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-        
-        do {
-            let options = [ NSInferMappingModelAutomaticallyOption : true,
-                            NSMigratePersistentStoresAutomaticallyOption : true]
-            
-            let persistentStoreCoordinator = context.persistentStoreCoordinator
-            
-            try persistentStoreCoordinator?.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: nil, options: options)
-
-        } catch {
-            fatalError("Unable to Load Persistent Store")
-        }
     }
     
     //MARK: db manager implementation
@@ -146,7 +134,15 @@ class CoreDataDbManager : AbstractDbManager {
     }
     
     internal func deleteItemById(id: String) {
-    
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ScheduleItem")
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            let items = try context.fetch(fetchRequest) as! [AbstractScheduleItem]
+            context.delete(items[0] as! NSManagedObject)
+        } catch let error as NSError  {
+            print("Item was not deleted, error: \(error.localizedDescription)")
+        }
     }
     
 }
