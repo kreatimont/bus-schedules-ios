@@ -16,7 +16,7 @@ class RealmDbManager : AbstractDbManager {
     //MARK: db manager implementation
     
     internal func retrieveDataFromDb() -> [AbstractScheduleItem] {
-        return Array(realm.objects(ScheduleItemRealm.self))
+        return Array(realm.objects(ScheduleItemRealm.self).sorted(byKeyPath: "fromDate"))
     }
     
     internal func clearDb() {
@@ -84,5 +84,13 @@ class RealmDbManager : AbstractDbManager {
             }
         }
 
+    }
+    
+    internal func deleteItemById(id: String) {
+        realm.beginWrite()
+        if let object = realm.object(ofType: ScheduleItemRealm.self, forPrimaryKey: Int(id)) {
+            realm.delete(object)
+        }
+        try! realm.commitWrite()
     }
 }

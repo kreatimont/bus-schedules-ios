@@ -9,4 +9,5 @@ protocol AbstractDbManager {
     
     func saveJsonArrayToDb(data: NSArray)
     
+    func deleteItemById(id: String)
 }

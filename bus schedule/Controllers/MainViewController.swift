@@ -113,7 +113,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             DispatchQueue.main.async {
                 ApiManager.instance.loadData(listener: self, url: ApiManager.instance.createUrl(
-                    dateFrom: self.dataArray.first!.getFromDate(), dateTo: self.dataArray.last!.getToDate()), dbManager: self.dbManager!)
+                    dateFrom: self.dataArray.first!.getFromDate(), dateTo: self.dataArray.last!.getToDate()), dbManager: self.dbManager!, vc: self)
 
             }
             
@@ -136,6 +136,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     // MARK: Table view data source & delegate
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            dbManager?.deleteItemById(id: String(dataArray[indexPath.row].getId()))
+            dataArray.remove(at: indexPath.row)
+            self.updateViews()
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {

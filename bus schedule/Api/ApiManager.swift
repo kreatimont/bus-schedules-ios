@@ -10,21 +10,26 @@ class ApiManager {
     let baseURL = "http://smartbus.gmoby.org/web/index.php/api/trips"
     let modeFromDate = "?from_date=", modeToDate = "&to_date="
     
-    func loadData(listener: ApiListener, url: String, dbManager: AbstractDbManager) {
+    func loadData(listener: ApiListener, url: String, dbManager: AbstractDbManager, vc: UIViewController) {
         
         manager.get(url, parameters: nil, progress: nil,
                     success: { (operation, responseObject) in
                         
                         let responseData = responseObject as! NSDictionary
                         if(responseData["success"] != nil) {
+                            
                             dbManager.saveJsonArrayToDb(data: responseData["data"] as! NSArray)
+                            
                             listener.success()
                         } else {
-                            listener.parseError()
+                            let alert = UIAlertController(title: "Error", message: "Response isn`t success", preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+                            vc.present(alert, animated: true, completion: nil)
                         }
                         
-        }, failure: { (operation, Error) in
-            listener.connectionError(error: Error as NSError, url: url)
+        }, failure: { (operation, error) in
+            /*Show error message*/
+            listener.connectionError(error: error as NSError, url: url)
         })
     }
     

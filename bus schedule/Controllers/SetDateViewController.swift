@@ -27,39 +27,39 @@ class SetDateViewController: UIViewController, ApiListener {
     
     @IBAction func setDate(_ sender: Any) {
         isLoaderStub(state: true)
-        ApiManager.instance.loadData(listener: self, url: ApiManager.instance.createUrl(dateFrom: fromDatePicker.date, dateTo: toDatePicker.date), dbManager: dbManager!)
+        ApiManager.instance.loadData(listener: self, url: ApiManager.instance.createUrl(dateFrom: fromDatePicker.date, dateTo: toDatePicker.date), dbManager: dbManager!, vc: self)
     }
     
     func isLoaderStub(state: Bool) {
         if state {
+            self.navigationController?.view.isUserInteractionEnabled = false
             self.view.isUserInteractionEnabled = false
-            
-            self.view.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
-        
             self.view.isUserInteractionEnabled = false
             self.btnSend.isEnabled = false
             self.fromDatePicker.isEnabled = false
             self.toDatePicker.isEnabled = false
+            self.view.addSubview(activityIndicator)
+            
+            activityIndicator.startAnimating()
         } else {
+            self.navigationController?.view.isUserInteractionEnabled = true
             self.view.isUserInteractionEnabled = true
-            
-            activityIndicator.removeFromSuperview()
-            activityIndicator.stopAnimating()
-            
             self.view.isUserInteractionEnabled = true
             self.btnSend.isEnabled = true
             self.fromDatePicker.isEnabled = true
             self.toDatePicker.isEnabled = true
+            
+            activityIndicator.removeFromSuperview()
+            activityIndicator.stopAnimating()
         }
     }
     
     //MARK: api listener implementation 
     
     internal func success() {
-        isLoaderStub(state: false)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
         _ = self.navigationController?.popToRootViewController(animated: true)
+        isLoaderStub(state: false)
     }
     
     internal func parseError() {
@@ -74,7 +74,7 @@ class SetDateViewController: UIViewController, ApiListener {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         alert.addAction(UIAlertAction(title: "Try again", style: UIAlertActionStyle.default, handler: { action in
-            ApiManager.instance.loadData(listener: self, url: url, dbManager: self.dbManager!)
+            ApiManager.instance.loadData(listener: self, url: url, dbManager: self.dbManager!, vc: self)
         }))
         self.present(alert, animated: true, completion: nil)
     }

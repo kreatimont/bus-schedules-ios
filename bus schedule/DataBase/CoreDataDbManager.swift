@@ -145,4 +145,8 @@ class CoreDataDbManager : AbstractDbManager {
 
     }
     
+    internal func deleteItemById(id: String) {
+    
+    }
+    
 }
