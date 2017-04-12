@@ -2,7 +2,7 @@
 //  City+CoreDataProperties.swift
 //  bus schedule
 //
-//  Created by kreatimont on 12/04/2017.
+//  Created by Alexandr Nadtoka on 4/12/17.
 //  Copyright © 2017 admin. All rights reserved.
 //
 
@@ -18,41 +18,41 @@ extension City {
 
     @NSManaged public var highlight: Int16
     @NSManaged public var name: String?
-    @NSManaged public var schedule_from: NSSet?
-    @NSManaged public var schedule_to: NSSet?
+    @NSManaged public var scheduleFrom: NSSet?
+    @NSManaged public var scheduleTo: NSSet?
 
 }
 
-// MARK: Generated accessors for schedule_from
+// MARK: Generated accessors for scheduleFrom
 extension City {
 
-    @objc(addSchedule_fromObject:)
-    @NSManaged public func addToSchedule_from(_ value: ScheduleItem)
+    @objc(addScheduleFromObject:)
+    @NSManaged public func addToScheduleFrom(_ value: ScheduleItem)
 
-    @objc(removeSchedule_fromObject:)
-    @NSManaged public func removeFromSchedule_from(_ value: ScheduleItem)
+    @objc(removeScheduleFromObject:)
+    @NSManaged public func removeFromScheduleFrom(_ value: ScheduleItem)
 
-    @objc(addSchedule_from:)
-    @NSManaged public func addToSchedule_from(_ values: NSSet)
+    @objc(addScheduleFrom:)
+    @NSManaged public func addToScheduleFrom(_ values: NSSet)
 
-    @objc(removeSchedule_from:)
-    @NSManaged public func removeFromSchedule_from(_ values: NSSet)
+    @objc(removeScheduleFrom:)
+    @NSManaged public func removeFromScheduleFrom(_ values: NSSet)
 
 }
 
-// MARK: Generated accessors for schedule_to
+// MARK: Generated accessors for scheduleTo
 extension City {
 
-    @objc(addSchedule_toObject:)
-    @NSManaged public func addToSchedule_to(_ value: ScheduleItem)
+    @objc(addScheduleToObject:)
+    @NSManaged public func addToScheduleTo(_ value: ScheduleItem)
 
-    @objc(removeSchedule_toObject:)
-    @NSManaged public func removeFromSchedule_to(_ value: ScheduleItem)
+    @objc(removeScheduleToObject:)
+    @NSManaged public func removeFromScheduleTo(_ value: ScheduleItem)
 
-    @objc(addSchedule_to:)
-    @NSManaged public func addToSchedule_to(_ values: NSSet)
+    @objc(addScheduleTo:)
+    @NSManaged public func addToScheduleTo(_ values: NSSet)
 
-    @objc(removeSchedule_to:)
-    @NSManaged public func removeFromSchedule_to(_ values: NSSet)
+    @objc(removeScheduleTo:)
+    @NSManaged public func removeFromScheduleTo(_ values: NSSet)
 
 }

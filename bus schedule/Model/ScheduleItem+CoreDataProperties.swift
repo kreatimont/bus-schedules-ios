@@ -2,7 +2,7 @@
 //  ScheduleItem+CoreDataProperties.swift
 //  bus schedule
 //
-//  Created by kreatimont on 12/04/2017.
+//  Created by Alexandr Nadtoka on 4/12/17.
 //  Copyright © 2017 admin. All rights reserved.
 //
 

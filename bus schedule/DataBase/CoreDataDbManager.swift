@@ -10,6 +10,18 @@ class CoreDataDbManager : AbstractDbManager {
     init() {
         self.context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        
+        do {
+            let options = [ NSInferMappingModelAutomaticallyOption : true,
+                            NSMigratePersistentStoresAutomaticallyOption : true]
+            
+            let persistentStoreCoordinator = context.persistentStoreCoordinator
+            
+            try persistentStoreCoordinator?.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: nil, options: options)
+
+        } catch {
+            fatalError("Unable to Load Persistent Store")
+        }
     }
     
     //MARK: db manager implementation

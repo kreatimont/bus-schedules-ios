@@ -1,0 +1,72 @@
+
+/* Class = "UILabel"; text = "To date"; ObjectID = "0KI-ef-lDs"; */
+"0KI-ef-lDs.text" = "Дата прибытия:";
+
+/* Class = "UILabel"; text = "info"; ObjectID = "7Ul-JK-Xp4"; */
+"7Ul-JK-Xp4.text" = "Информация";
+
+/* Class = "UILabel"; text = "From time"; ObjectID = "7iF-nW-iyG"; */
+"7iF-nW-iyG.text" = "Время выезда";
+
+/* Class = "UILabel"; text = "9 October 2012"; ObjectID = "9GT-Ik-Qi9"; */
+"9GT-Ik-Qi9.text" = "9 October 2012";
+
+/* Class = "UILabel"; text = "To date"; ObjectID = "EJ6-27-6sn"; */
+"EJ6-27-6sn.text" = "Дата прибытия:";
+
+/* Class = "UILabel"; text = "to date"; ObjectID = "Kz8-ZU-M1R"; */
+"Kz8-ZU-M1R.text" = "Дата прибытия:;
+
+/* Class = "UILabel"; text = "To info"; ObjectID = "LPu-vz-7Bx"; */
+"LPu-vz-7Bx.text" = "Информация по прибытию";
+
+/* Class = "UILabel"; text = "From info"; ObjectID = "LT8-6c-TGg"; */
+"LT8-6c-TGg.text" = "Информация по выезду";
+
+/* Class = "UILabel"; text = "Price:"; ObjectID = "LrF-2q-Mfq"; */
+"LrF-2q-Mfq.text" = "Цена:";
+
+/* Class = "UILabel"; text = "price"; ObjectID = "Mv7-3e-4bi"; */
+"Mv7-3e-4bi.text" = "Цена:";
+
+/* Class = "UILabel"; text = "From date"; ObjectID = "Pes-y7-3qq"; */
+"Pes-y7-3qq.text" = "Дата выезда:";
+
+/* Class = "UILabel"; text = "From date"; ObjectID = "SCl-jd-6x5"; */
+"SCl-jd-6x5.text" = "Дата выезда:";
+
+/* Class = "UILabel"; text = "Date to"; ObjectID = "UPs-qN-omv"; */
+"UPs-qN-omv.text" = "Дата прибытия:";
+
+/* Class = "UILabel"; text = "Info"; ObjectID = "V3S-9M-Dwm"; */
+"V3S-9M-Dwm.text" = "Инфрмация";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "YbS-V3-93E"; */
+"YbS-V3-93E.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "To city"; ObjectID = "bCM-Jz-0Tz"; */
+"bCM-Jz-0Tz.text" = "To city";
+
+/* Class = "UILabel"; text = "Date from "; ObjectID = "dQ8-pL-UnM"; */
+"dQ8-pL-UnM.text" = "Дата выезда:";
+
+/* Class = "UILabel"; text = "Set date"; ObjectID = "iAm-Rq-tVw"; */
+"iAm-Rq-tVw.text" = "Задать период";
+
+/* Class = "UILabel"; text = "From city"; ObjectID = "mAE-V1-0QW"; */
+"mAE-V1-0QW.text" = "From city";
+
+/* Class = "UILabel"; text = "9 October 2012"; ObjectID = "osQ-iY-wvg"; */
+"osQ-iY-wvg.text" = "9 October 2012";
+
+/* Class = "UILabel"; text = "from date"; ObjectID = "uja-eI-aUz"; */
+"uja-eI-aUz.text" = "Дата выезда:";
+
+/* Class = "UILabel"; text = "price"; ObjectID = "uuZ-8F-Ady"; */
+"uuZ-8F-Ady.text" = "Цена:";
+
+/* Class = "UILabel"; text = "To time"; ObjectID = "wbU-uc-fK9"; */
+"wbU-uc-fK9.text" = "Время прибытия:";
+
+/* Class = "UIButton"; normalTitle = "Set"; ObjectID = "yHb-0y-714"; */
+"yHb-0y-714.normalTitle" = "Установить";

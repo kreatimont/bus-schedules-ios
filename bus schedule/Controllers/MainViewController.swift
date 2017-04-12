@@ -1,4 +1,10 @@
 
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
+    }
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
     
     @IBOutlet weak var labelTo: UILabel!
@@ -128,7 +134,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if dataArray.count == 0 {
             //MARK: empty stub
             let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text = "No data available"
+            noDataLabel.text = "empty_stub".localized
             noDataLabel.textColor = UIColor.black
             noDataLabel.textAlignment = .center
             tableView.backgroundView = noDataLabel
