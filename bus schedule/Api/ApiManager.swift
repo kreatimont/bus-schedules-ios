@@ -28,6 +28,7 @@ class ApiManager {
                             let alert = UIAlertController(title: "Error", message: "Response isn`t success", preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
                             vc.present(alert, animated: true, completion: nil)
+                            listener.parseError()
                         }
                         
         }, failure: { (operation, error) in
