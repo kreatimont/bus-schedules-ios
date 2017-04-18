@@ -63,7 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         btnSet.isUserInteractionEnabled = true
         
         //set current db manager
-        dbManager = CoreDataDbManager.instance
+        dbManager = RealmDbManager.instance
         
         dataArray = (dbManager?.retrieveDataFromDb())!
         self.updateViews()

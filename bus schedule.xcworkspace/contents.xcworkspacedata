@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/admin/Documents/bus schedule/BusSchedule.xcodeproj">
+      location = "group:bus schedule.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:bus schedule.xcodeproj">
    </FileRef>
 </Workspace>

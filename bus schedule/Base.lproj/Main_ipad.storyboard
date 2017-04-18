@@ -22,37 +22,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPs-qN-omv">
-                                <rect key="frame" x="261" y="94" width="50" height="17"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 October 2012" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="osQ-iY-wvg">
-                                <rect key="frame" x="100" y="94" width="101" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date from " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ8-pL-UnM">
-                                <rect key="frame" x="16" y="94" width="72" height="17"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHb-0y-714">
-                                <rect key="frame" x="722" y="94" width="30" height="30"/>
-                                <state key="normal" title="Set"/>
-                                <connections>
-                                    <segue destination="n9V-hx-k6T" kind="show" identifier="setDate" id="lqb-o9-ba3"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 October 2012" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9GT-Ik-Qi9" userLabel="Date To">
-                                <rect key="frame" x="336" y="94" width="101" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Sym-f7-4sC">
+                                <rect key="frame" x="16" y="100" width="384" height="17"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date from " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ8-pL-UnM">
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 October 2012" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="osQ-iY-wvg">
+                                        <rect key="frame" x="92" y="0.0" width="101" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPs-qN-omv">
+                                        <rect key="frame" x="213" y="0.0" width="50" height="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 October 2012" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9GT-Ik-Qi9" userLabel="Date To">
+                                        <rect key="frame" x="283" y="0.0" width="101" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdq-m8-tZT">
                                 <rect key="frame" x="16" y="574" width="736" height="434"/>
                                 <connections>
@@ -127,27 +125,29 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHb-0y-714">
+                                <rect key="frame" x="722" y="94" width="30" height="30"/>
+                                <state key="normal" title="Set"/>
+                                <connections>
+                                    <segue destination="n9V-hx-k6T" kind="show" identifier="setDate" id="lqb-o9-ba3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wdq-m8-tZT" firstAttribute="top" secondItem="NYN-fA-Qpg" secondAttribute="bottom" constant="8" id="11X-Ir-bvr"/>
-                            <constraint firstItem="yHb-0y-714" firstAttribute="top" secondItem="EUi-Kg-nXZ" secondAttribute="bottom" constant="30" id="2eR-wT-tuv"/>
                             <constraint firstItem="wdq-m8-tZT" firstAttribute="leading" secondItem="EXf-JU-Xq4" secondAttribute="leading" constant="16" id="5dO-gl-OV3"/>
-                            <constraint firstItem="UPs-qN-omv" firstAttribute="top" secondItem="EUi-Kg-nXZ" secondAttribute="bottom" constant="30" id="DBW-c3-gKb"/>
+                            <constraint firstItem="NYN-fA-Qpg" firstAttribute="top" secondItem="Sym-f7-4sC" secondAttribute="bottom" constant="15" id="Bj7-L8-x18"/>
                             <constraint firstItem="NYN-fA-Qpg" firstAttribute="leading" secondItem="EXf-JU-Xq4" secondAttribute="leading" constant="16" id="EZb-6d-QBA"/>
-                            <constraint firstAttribute="trailing" secondItem="yHb-0y-714" secondAttribute="trailing" constant="16" id="HN6-0G-kAw"/>
-                            <constraint firstItem="UPs-qN-omv" firstAttribute="leading" secondItem="EXf-JU-Xq4" secondAttribute="leadingMargin" constant="241" id="IO2-m7-qzr"/>
-                            <constraint firstItem="9GT-Ik-Qi9" firstAttribute="top" secondItem="EUi-Kg-nXZ" secondAttribute="bottom" constant="30" id="QTS-FR-fux"/>
-                            <constraint firstItem="dQ8-pL-UnM" firstAttribute="leading" secondItem="EXf-JU-Xq4" secondAttribute="leading" constant="16" id="Vyq-rY-ojs"/>
-                            <constraint firstItem="9GT-Ik-Qi9" firstAttribute="leading" secondItem="UPs-qN-omv" secondAttribute="trailing" constant="25" id="Yab-XI-cLp"/>
+                            <constraint firstItem="Sym-f7-4sC" firstAttribute="leading" secondItem="EXf-JU-Xq4" secondAttribute="leading" constant="16" id="GEb-ZW-rXk"/>
+                            <constraint firstItem="yHb-0y-714" firstAttribute="top" secondItem="EUi-Kg-nXZ" secondAttribute="bottom" constant="30" id="M5V-SB-hMG"/>
+                            <constraint firstAttribute="trailing" secondItem="yHb-0y-714" secondAttribute="trailing" constant="16" id="X4d-d5-FkF"/>
+                            <constraint firstItem="yHb-0y-714" firstAttribute="leading" secondItem="Sym-f7-4sC" secondAttribute="trailing" constant="322" id="ZeC-IC-Wod"/>
                             <constraint firstItem="wdq-m8-tZT" firstAttribute="height" secondItem="NYN-fA-Qpg" secondAttribute="height" id="Zva-PM-P7b"/>
-                            <constraint firstItem="osQ-iY-wvg" firstAttribute="leading" secondItem="dQ8-pL-UnM" secondAttribute="trailing" constant="12" id="aaN-5n-wZv"/>
+                            <constraint firstItem="Sym-f7-4sC" firstAttribute="top" secondItem="EUi-Kg-nXZ" secondAttribute="bottom" constant="36" id="bzS-Bp-XXv"/>
                             <constraint firstAttribute="trailing" secondItem="wdq-m8-tZT" secondAttribute="trailing" constant="16" id="c2V-He-Aqa"/>
-                            <constraint firstItem="osQ-iY-wvg" firstAttribute="top" secondItem="EUi-Kg-nXZ" secondAttribute="bottom" constant="30" id="kkH-9Z-l2E"/>
                             <constraint firstItem="jfD-aR-Hlc" firstAttribute="top" secondItem="wdq-m8-tZT" secondAttribute="bottom" constant="16" id="lTv-HE-bt5"/>
                             <constraint firstAttribute="trailing" secondItem="NYN-fA-Qpg" secondAttribute="trailing" constant="16" id="sm5-GU-M9z"/>
-                            <constraint firstItem="NYN-fA-Qpg" firstAttribute="top" secondItem="yHb-0y-714" secondAttribute="bottom" constant="8" id="uCp-e7-ApY"/>
-                            <constraint firstItem="dQ8-pL-UnM" firstAttribute="top" secondItem="EUi-Kg-nXZ" secondAttribute="bottom" constant="30" id="xJh-Hb-hVT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZqC-Wr-ZhB">
