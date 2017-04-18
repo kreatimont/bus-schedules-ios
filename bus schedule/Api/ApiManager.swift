@@ -12,7 +12,7 @@ class ApiManager {
     
     let manager = AFHTTPSessionManager()
     
-    let baseURL = "http://smartbus.gmoby.org/web/index.php/api/"
+    let baseURL = "http://smartbus.gmoby.org/web/index.php/api"
     let modeFromDate = "?from_date=", modeToDate = "&to_date="
     
     func loadScheduleItems(listener: ApiListener, url: String, dbManager: AbstractDbManager, vc: UIViewController) {
