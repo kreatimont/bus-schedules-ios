@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05773EF61EA6AD4000F2BC4F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05773EF51EA6AD4000F2BC4F /* BaseViewController.swift */; };
+		05773EF81EA6ADDD00F2BC4F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05773EF71EA6ADDD00F2BC4F /* BaseTableViewController.swift */; };
 		057F12931E9CED2E0055E4FB /* AbstractScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */; };
 		057F12951E9CED7F0055E4FB /* AbstractScheduleCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F12941E9CED7F0055E4FB /* AbstractScheduleCity.swift */; };
 		057F12981E9D0A520055E4FB /* Main_ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057F12961E9D0A520055E4FB /* Main_ipad.storyboard */; };
@@ -49,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05773EF51EA6AD4000F2BC4F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
+		05773EF71EA6ADDD00F2BC4F /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewController.swift; path = Controllers/BaseTableViewController.swift; sourceTree = "<group>"; };
 		057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractScheduleItem.swift; path = "bus schedule/Model/AbstractScheduleItem.swift"; sourceTree = "<group>"; };
 		057F12941E9CED7F0055E4FB /* AbstractScheduleCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractScheduleCity.swift; path = "bus schedule/Model/AbstractScheduleCity.swift"; sourceTree = "<group>"; };
 		057F12971E9D0A520055E4FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_ipad.storyboard; sourceTree = "<group>"; };
@@ -108,6 +112,15 @@
 				057F12941E9CED7F0055E4FB /* AbstractScheduleCity.swift */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		05773EF91EA6AE3F00F2BC4F /* base */ = {
+			isa = PBXGroup;
+			children = (
+				05773EF71EA6ADDD00F2BC4F /* BaseTableViewController.swift */,
+				05773EF51EA6AD4000F2BC4F /* BaseViewController.swift */,
+			);
+			name = base;
 			sourceTree = "<group>";
 		};
 		058B43F61E9D76CE0067AD16 /* cells */ = {
@@ -226,6 +239,7 @@
 		84F95CB01E8D550D00658A7F /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05773EF91EA6AE3F00F2BC4F /* base */,
 				84F95CBD1E8D59BA00658A7F /* DetailedViewController.swift */,
 				84F95CBE1E8D59BA00658A7F /* SetDateViewController.swift */,
 				84F95CBF1E8D59BA00658A7F /* MainViewController.swift */,
@@ -375,6 +389,7 @@
 				057F12951E9CED7F0055E4FB /* AbstractScheduleCity.swift in Sources */,
 				059FCFF31E9BD3A800494966 /* City+CoreDataClass.swift in Sources */,
 				059FCFB31E9BB62D00494966 /* ScheduleCityRealm.swift in Sources */,
+				05773EF61EA6AD4000F2BC4F /* BaseViewController.swift in Sources */,
 				057F12931E9CED2E0055E4FB /* AbstractScheduleItem.swift in Sources */,
 				058B43FB1E9D77FA0067AD16 /* CoreDataDbManager.swift in Sources */,
 				84F95CC01E8D59BA00658A7F /* DetailedViewController.swift in Sources */,
@@ -389,6 +404,7 @@
 				059FCFF41E9BD3A800494966 /* City+CoreDataProperties.swift in Sources */,
 				059FCFB41E9BB62D00494966 /* ScheduleItemRealm.swift in Sources */,
 				059FCFF11E9BD3A800494966 /* ScheduleItem+CoreDataClass.swift in Sources */,
+				05773EF81EA6ADDD00F2BC4F /* BaseTableViewController.swift in Sources */,
 				840FA6331E8942F200B8A80E /* ScheduleCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

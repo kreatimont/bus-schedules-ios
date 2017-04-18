@@ -57,6 +57,8 @@ class SetDateViewController: UIViewController, ApiListener {
     //MARK: api listener implementation 
     
     internal func success() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+        _ = self.navigationController?.popToRootViewController(animated: true)
         isLoaderStub(state: false)
     }
     

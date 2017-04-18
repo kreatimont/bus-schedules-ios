@@ -25,9 +25,6 @@ class ApiManager {
                             
                             dbManager.saveScheduleItemsJsonToDb(data: responseData["data"] as! NSArray)
                             
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
-                            _ = vc.navigationController?.popToRootViewController(animated: true)
-                            
                             listener.success()
                         } else {
                             self.handleFailureResponse(listener: listener, vc: vc)
