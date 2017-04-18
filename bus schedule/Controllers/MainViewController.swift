@@ -134,7 +134,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         DispatchQueue.global(qos: .background).async {
             
             DispatchQueue.main.async {
-                ApiManager.instance.loadData(listener: self, url: ApiManager.instance.createUrl(
+                ApiManager.instance.loadScheduleItems(listener: self, url: ApiManager.instance.createUrl(
                     dateFrom: self.dataArray.first!.getFromDate(), dateTo: self.dataArray.last!.getToDate()), dbManager: self.dbManager!, vc: self)
 
             }

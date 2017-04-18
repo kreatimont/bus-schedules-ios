@@ -29,7 +29,7 @@ class RealmDbManager : AbstractDbManager {
         return Array(realm.objects(ScheduleItemRealm.self).filter("id == \(id)")).first
     }
     
-    internal func saveJsonArrayToDb(data: NSArray) {
+    internal func saveScheduleItemsJsonToDb(data: NSArray) {
         for dataItem in data {
             
             let currentItem = dataItem as! NSDictionary

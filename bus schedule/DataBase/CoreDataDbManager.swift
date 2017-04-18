@@ -58,7 +58,7 @@ class CoreDataDbManager : AbstractDbManager {
         return nil
     }
     
-    internal func saveJsonArrayToDb(data: NSArray) {
+    internal func saveScheduleItemsJsonToDb(data: NSArray) {
         for dataItem in data {
             
             let tmpData = dataItem as! NSDictionary

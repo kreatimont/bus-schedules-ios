@@ -27,7 +27,7 @@ class SetDateViewController: UIViewController, ApiListener {
     
     @IBAction func setDate(_ sender: Any) {
         isLoaderStub(state: true)
-        ApiManager.instance.loadData(listener: self, url: ApiManager.instance.createUrl(dateFrom: fromDatePicker.date, dateTo: toDatePicker.date), dbManager: dbManager!, vc: self)
+        ApiManager.instance.loadScheduleItems(listener: self, url: ApiManager.instance.createUrl(dateFrom: fromDatePicker.date, dateTo: toDatePicker.date), dbManager: dbManager!, vc: self)
     }
     
     func isLoaderStub(state: Bool) {

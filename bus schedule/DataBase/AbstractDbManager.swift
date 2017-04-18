@@ -7,7 +7,7 @@ protocol AbstractDbManager {
     
     func getItemById(id: String) -> AbstractScheduleItem?
     
-    func saveJsonArrayToDb(data: NSArray)
+    func saveScheduleItemsJsonToDb(data: NSArray)
     
     func deleteItemById(id: String)
 }
