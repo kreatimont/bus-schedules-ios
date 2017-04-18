@@ -3,6 +3,11 @@ import AFNetworking
 
 class ApiManager {
     
+    enum ApiEntity {
+        case trips
+        case cities
+    }
+    
     static let instance = ApiManager()
     
     let manager = AFHTTPSessionManager()
@@ -12,7 +17,7 @@ class ApiManager {
     
     func loadScheduleItems(listener: ApiListener, url: String, dbManager: AbstractDbManager, vc: UIViewController) {
         
-        manager.get(url + "/trips", parameters: nil, progress: nil,
+        manager.get(url, parameters: nil, progress: nil,
                     success: { (operation, responseObject) in
                         
                         let responseData = responseObject as! NSDictionary
@@ -56,7 +61,17 @@ class ApiManager {
 
     }
     
-    func createUrl(dateFrom: Date, dateTo: Date) -> String {
-        return baseURL + modeFromDate + DateConverter.convertDateToStringForResponse(date: dateFrom) + modeToDate + DateConverter.convertDateToStringForResponse(date: dateTo)
+    func createUrl(dateFrom: Date, dateTo: Date, entity: ApiEntity) -> String {
+        
+        var requestUrl = baseURL;
+        switch entity {
+            case ApiEntity.trips:
+                requestUrl.append("/trips")
+                break
+            case ApiEntity.cities:
+                requestUrl.append("/cities")
+        }
+        
+        return requestUrl + modeFromDate + DateConverter.convertDateToStringForResponse(date: dateFrom) + modeToDate + DateConverter.convertDateToStringForResponse(date: dateTo)
     }
 }
