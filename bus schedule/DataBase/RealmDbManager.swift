@@ -35,7 +35,6 @@ class RealmDbManager : AbstractDbManager {
             let currentItem = dataItem as! NSDictionary
             
             do {
-                
                 let currentFromCity = currentItem["from_city"] as! NSDictionary
                 let currentToCity = currentItem["to_city"] as! NSDictionary
                 

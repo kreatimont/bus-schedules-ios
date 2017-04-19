@@ -314,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3F-u9-9af" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="24" y="724"/>
+            <point key="canvasLocation" x="24" y="325"/>
         </scene>
         <!--Set Date View Controller-->
         <scene sceneID="PW8-Bo-4x4">
@@ -405,7 +405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RpI-FM-I9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093" y="-9"/>
+            <point key="canvasLocation" x="891" y="-414"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0mM-kP-fFB">

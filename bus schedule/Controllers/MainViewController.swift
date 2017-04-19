@@ -6,6 +6,11 @@ extension String {
 }
 
 extension UIColor{
+    
+    static var indigo: UIColor {
+        return UIColor(red:0.66, green:0.76, blue:1.00, alpha:1.0)
+    }
+    
     class func getCustomBlueColor() -> UIColor{
         return UIColor(red:0.86, green:0.73, blue:1.00, alpha:1.0)
     }
@@ -15,18 +20,14 @@ extension UIColor{
     }
 }
 
-class ViewController:  BaseViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
+class ViewController:  BaseTableViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
     
     @IBOutlet weak var labelTo: UILabel!
     @IBOutlet weak var labelFrom: UILabel!
-    
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var dateFrom: UILabel!
     @IBOutlet weak var dateTo: UILabel!
-    
     @IBOutlet weak var btnSet: UIButton!
-
     @IBOutlet weak var containerView: UIView!
     
     var dataArray: [AbstractScheduleItem] = []
@@ -131,9 +132,7 @@ class ViewController:  BaseViewController, UITableViewDelegate, UITableViewDataS
     func handleRefresh(refreshControl: UIRefreshControl) {
         DispatchQueue.global(qos: .background).async {
             DispatchQueue.main.async {
-                ApiManager.instance.loadScheduleItems(listener: self, url: ApiManager.instance.createUrl(
-                    dateFrom: self.dataArray.first!.getFromDate(), dateTo: self.dataArray.last!.getToDate(), entity: ApiManager.ApiEntity.trips), dbManager: self.dbManager!, vc: self)
-
+                ApiManager.instance.loadScheduleItems(dateFrom: self.dataArray.first!.getFromDate(), dateTo: self.dataArray.last!.getToDate(), listener: self, dbManager: self.dbManager!, vc: self)
             }
         }
     }
@@ -209,7 +208,7 @@ class ViewController:  BaseViewController, UITableViewDelegate, UITableViewDataS
         cell.layer.borderColor = UIColor.lightGray.cgColor
         
         if(indexPath.row % 2 == 0) {
-            cell.contentView.backgroundColor = UIColor.getCustomBlueColor()
+            cell.contentView.backgroundColor = UIColor.indigo
         } else {
             cell.contentView.backgroundColor = UIColor.getCustomGreenColor()
         }

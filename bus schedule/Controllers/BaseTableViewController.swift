@@ -1,7 +1,6 @@
 
-class BaseTableViewController: UIViewController {
+class BaseTableViewController: BaseViewController {
    
-    
     
     
 }

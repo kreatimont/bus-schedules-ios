@@ -12,12 +12,11 @@ class ApiManager {
     
     let manager = AFHTTPSessionManager()
     
-    let baseURL = "http://smartbus.gmoby.org/web/index.php/api"
-    let modeFromDate = "?from_date=", modeToDate = "&to_date="
-    
-    func loadScheduleItems(listener: ApiListener, url: String, dbManager: AbstractDbManager, vc: BaseViewController) {
-        
-        manager.get(url, parameters: nil, progress: nil,
+    let baseURL = "http://smartbus.gmoby.org/web/index.php/api", modeFromDate = "?from_date=", modeToDate = "&to_date="
+
+    func loadScheduleItems(dateFrom: Date, dateTo: Date, listener: ApiListener, dbManager: AbstractDbManager, vc: BaseViewController) {
+
+        manager.get(createUrl(dateFrom: dateFrom, dateTo: dateTo, entity: ApiEntity.trips), parameters: nil, progress: nil,
                     success: { (operation, responseObject) in
                         
                         let responseData = responseObject as! NSDictionary
@@ -44,16 +43,13 @@ class ApiManager {
     }
     
     func createUrl(dateFrom: Date, dateTo: Date, entity: ApiEntity) -> String {
-        
         var requestUrl = baseURL;
         switch entity {
             case ApiEntity.trips:
                 requestUrl.append("/trips")
-                break
             case ApiEntity.cities:
                 requestUrl.append("/cities")
         }
-        
         return requestUrl + modeFromDate + DateConverter.convertDateToStringForResponse(date: dateFrom) + modeToDate + DateConverter.convertDateToStringForResponse(date: dateTo)
     }
 }
