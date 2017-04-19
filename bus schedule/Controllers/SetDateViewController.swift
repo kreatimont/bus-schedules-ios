@@ -11,6 +11,7 @@ class SetDateViewController: BaseViewController, ApiListener {
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
     
     var dbManager: AbstractDbManager? = nil
+    var setDateDelegate: SetDateDelegate? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class SetDateViewController: BaseViewController, ApiListener {
     
     @IBAction func setDate(_ sender: Any) {
         isLoaderStub(state: true)
-        ApiManager.instance.loadScheduleItems(dateFrom: fromDatePicker.date, dateTo: toDatePicker.date, listener: self, dbManager: dbManager!, vc: self)
+        ApiManager.instance.loadScheduleItems(dateFrom: fromDatePicker.date, dateTo: toDatePicker.date, listener: self, dbManager: dbManager!, vc: self, clearDb: true)
     }
     
     func isLoaderStub(state: Bool) {
@@ -35,9 +36,9 @@ class SetDateViewController: BaseViewController, ApiListener {
             self.navigationController?.view.isUserInteractionEnabled = false
             self.view.isUserInteractionEnabled = false
             self.view.isUserInteractionEnabled = false
-//            self.btnSend.isEnabled = false
-//            self.fromDatePicker.isEnabled = false
-//            self.toDatePicker.isEnabled = false
+            self.btnSend.isEnabled = false
+            self.fromDatePicker.isEnabled = false
+            self.toDatePicker.isEnabled = false
             self.view.addSubview(activityIndicator)
             
             activityIndicator.startAnimating()
@@ -57,9 +58,9 @@ class SetDateViewController: BaseViewController, ApiListener {
     //MARK: api listener implementation 
     
     internal func responseSuccessed() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
         _ = self.navigationController?.popToRootViewController(animated: true)
         isLoaderStub(state: false)
+        setDateDelegate?.dateDidSet()
     }
     
     internal func responseFailed() {

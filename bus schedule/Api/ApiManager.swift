@@ -14,9 +14,11 @@ class ApiManager {
     
     let baseURL = "http://smartbus.gmoby.org/web/index.php/api", modeFromDate = "?from_date=", modeToDate = "&to_date="
 
-    func loadScheduleItems(dateFrom: Date, dateTo: Date, listener: ApiListener, dbManager: AbstractDbManager, vc: BaseViewController) {
+    func loadScheduleItems(dateFrom: Date, dateTo: Date, listener: ApiListener, dbManager: AbstractDbManager, vc: BaseViewController, clearDb: Bool) {
 
-        dbManager.clearDb()
+        if clearDb {
+            dbManager.clearDb()
+        }
         
         manager.get(createUrl(dateFrom: dateFrom, dateTo: dateTo, entity: ApiEntity.trips), parameters: nil, progress: nil,
                     success: { (operation, responseObject) in

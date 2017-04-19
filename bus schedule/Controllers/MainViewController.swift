@@ -1,5 +1,5 @@
 
-class ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
+class ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, ApiListener, SetDateDelegate {
     
     @IBOutlet weak var labelTo: UILabel!
     @IBOutlet weak var labelFrom: UILabel!
@@ -36,7 +36,6 @@ class ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSo
         self.updateViews()
         initTableView()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableData(_:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
     
     func initGestureRecognizers() {
@@ -71,11 +70,6 @@ class ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSo
         self.present(alert, animated: true, completion: nil)
     }
     
-    func reloadTableData(_ notification: Notification) {
-        dataArray = (dbManager?.retrieveDataFromDb())!
-        self.updateViews()
-    }
-    
     @IBAction func clearCoreData(_ sender: Any) {
         dbManager?.clearDb()
         dataArray.removeAll()
@@ -104,9 +98,16 @@ class ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSo
     func handleRefresh(refreshControl: UIRefreshControl) {
         DispatchQueue.global(qos: .background).async {
             DispatchQueue.main.async {
-                ApiManager.instance.loadScheduleItems(dateFrom: self.dataArray.first!.getFromDate(), dateTo: self.dataArray.last!.getToDate(), listener: self, dbManager: self.dbManager!, vc: self)
+                ApiManager.instance.loadScheduleItems(dateFrom: self.dataArray.first!.getFromDate(), dateTo: self.dataArray.last!.getToDate(), listener: self, dbManager: self.dbManager!, vc: self, clearDb: false)
             }
         }
+    }
+    
+    //MARK: SetDateDelegate implementation
+    
+    internal func dateDidSet() {
+        dataArray = (dbManager?.retrieveDataFromDb())!
+        self.updateViews()
     }
     
     //MARK: Api listener implementation
@@ -207,6 +208,7 @@ class ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSo
         if(segue.identifier == "setDateSegue") {
             let setDateVC = segue.destination as! SetDateViewController
             setDateVC.dbManager = dbManager
+            setDateVC.setDateDelegate = self
         }
     }
 

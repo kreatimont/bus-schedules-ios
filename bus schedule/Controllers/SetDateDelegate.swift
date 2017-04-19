@@ -1,0 +1,6 @@
+
+protocol SetDateDelegate {
+    
+    func dateDidSet()
+    
+}
