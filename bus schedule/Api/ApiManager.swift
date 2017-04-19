@@ -16,6 +16,8 @@ class ApiManager {
 
     func loadScheduleItems(dateFrom: Date, dateTo: Date, listener: ApiListener, dbManager: AbstractDbManager, vc: BaseViewController) {
 
+        dbManager.clearDb()
+        
         manager.get(createUrl(dateFrom: dateFrom, dateTo: dateTo, entity: ApiEntity.trips), parameters: nil, progress: nil,
                     success: { (operation, responseObject) in
                         

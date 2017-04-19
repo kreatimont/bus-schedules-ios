@@ -18,8 +18,6 @@ class DetailedViewController: UIViewController {
         super.viewDidLoad()
         if(model != nil) {
             setUpWithModel(model: model!)
-        } else {
-            showEmptyStub()
         }
     }
     
@@ -34,25 +32,4 @@ class DetailedViewController: UIViewController {
         toInfo.text = model.getToInfo()
     }
     
-    func showEmptyStub() {
-        
-        self.fromCity.isHidden = true
-        self.toCity.isHidden = true
-        self.fromDate.isHidden = true
-        self.toDate.isHidden = true
-        self.info.isHidden = true
-        self.fromInfo.isHidden = true
-        self.toInfo.isHidden = true
-        self.price.isHidden = true
-        self.fromTime.isHidden = true
-        self.toTime.isHidden = true
-        
-        let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
-        noDataLabel.text = "empty_stub".localized
-        noDataLabel.textColor = UIColor.black
-        noDataLabel.textAlignment = .center
-        self.view.addSubview(noDataLabel)
-    }
-    
-
 }

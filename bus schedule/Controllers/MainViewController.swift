@@ -20,7 +20,7 @@ extension UIColor{
     }
 }
 
-class ViewController: BaseTableViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
+class ViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
     
     @IBOutlet weak var labelTo: UILabel!
     @IBOutlet weak var labelFrom: UILabel!
@@ -122,13 +122,6 @@ class ViewController: BaseTableViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func initTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-    
-        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh), for: UIControlEvents.valueChanged)
-    }
-    
     func handleRefresh(refreshControl: UIRefreshControl) {
         DispatchQueue.global(qos: .background).async {
             DispatchQueue.main.async {
@@ -152,7 +145,14 @@ class ViewController: BaseTableViewController, UITableViewDelegate, UITableViewD
         self.refreshControl.endRefreshing()
     }
     
-    // MARK: Table view data source & delegate
+    func initTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh), for: UIControlEvents.valueChanged)
+    }
+    
+    // MARK: Table view implementation
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -217,14 +217,12 @@ class ViewController: BaseTableViewController, UITableViewDelegate, UITableViewD
         cell.info.text = (scheduleItem.getFromCity().getName()) + " -> " + (scheduleItem.getToCity().getName())
         cell.fromDate.text = DateConverter.convertDateToString(date: scheduleItem.getFromDate())
         cell.toDate.text = DateConverter.convertDateToString(date: scheduleItem.getToDate())
-        
         cell.price.text = String(scheduleItem.getPrice())
         
         return cell
     }
     
     //MARK: Segues
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "detailedSegue") {
             let detailedVC = segue.destination as! DetailedViewController
