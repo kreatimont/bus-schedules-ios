@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050ECE8E1EA7C271002D9DD7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050ECE8D1EA7C271002D9DD7 /* Extensions.swift */; };
 		05773EF61EA6AD4000F2BC4F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05773EF51EA6AD4000F2BC4F /* BaseViewController.swift */; };
 		05773EF81EA6ADDD00F2BC4F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05773EF71EA6ADDD00F2BC4F /* BaseTableViewController.swift */; };
 		057F12931E9CED2E0055E4FB /* AbstractScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		050ECE8D1EA7C271002D9DD7 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = "bus schedule/Utils/Extensions.swift"; sourceTree = "<group>"; };
 		05773EF51EA6AD4000F2BC4F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
 		05773EF71EA6ADDD00F2BC4F /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewController.swift; path = Controllers/BaseTableViewController.swift; sourceTree = "<group>"; };
 		057F12921E9CED2E0055E4FB /* AbstractScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbstractScheduleItem.swift; path = "bus schedule/Model/AbstractScheduleItem.swift"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				058B44021E9D78CE0067AD16 /* DateConverter.swift */,
+				050ECE8D1EA7C271002D9DD7 /* Extensions.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				050ECE8E1EA7C271002D9DD7 /* Extensions.swift in Sources */,
 				058B43FF1E9D78500067AD16 /* ApiListener.swift in Sources */,
 				841EB8FE1E841EEF007AE710 /* bus_schedule.xcdatamodeld in Sources */,
 				057F12951E9CED7F0055E4FB /* AbstractScheduleCity.swift in Sources */,

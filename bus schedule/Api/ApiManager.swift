@@ -33,7 +33,7 @@ class ApiManager {
             self.handleConnectionError(error: error, listener: listener, vc: vc)
         })
     }
-    
+        
     func handleFailureResponse(listener: ApiListener, vc: BaseViewController) {
         vc.displayResponseErrorAlert()
         listener.responseFailed()
@@ -41,7 +41,7 @@ class ApiManager {
     
     func handleConnectionError(error: Error, listener: ApiListener, vc: BaseViewController) {
         vc.displayConnectionErrorAlert(error: error)
-        listener.connectionError(error: error)
+        listener.responseFailed()
     }
     
     func createUrl(dateFrom: Date, dateTo: Date, entity: ApiEntity) -> String {

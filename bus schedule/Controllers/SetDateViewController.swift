@@ -35,9 +35,9 @@ class SetDateViewController: BaseViewController, ApiListener {
             self.navigationController?.view.isUserInteractionEnabled = false
             self.view.isUserInteractionEnabled = false
             self.view.isUserInteractionEnabled = false
-            self.btnSend.isEnabled = false
-            self.fromDatePicker.isEnabled = false
-            self.toDatePicker.isEnabled = false
+//            self.btnSend.isEnabled = false
+//            self.fromDatePicker.isEnabled = false
+//            self.toDatePicker.isEnabled = false
             self.view.addSubview(activityIndicator)
             
             activityIndicator.startAnimating()
@@ -64,16 +64,10 @@ class SetDateViewController: BaseViewController, ApiListener {
     
     internal func responseFailed() {
         isLoaderStub(state: false)
-    }
-    
-    internal func connectionError(error: Error) {
-        isLoaderStub(state: false)
-        
         btnSend.setTitle("reload_btn".localized, for: .normal)
         btnSend.setTitleColor(UIColor.white, for: .normal)
         btnSend.backgroundColor = UIColor.gray
         btnSend.layer.cornerRadius = 4.0
-
     }
     
 }
