@@ -31,8 +31,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var dataArray: [AbstractScheduleItem] = []
     
-    let cellId = "scheduleCell"
-
     let refreshControl = UIRefreshControl()
     
     var dbManager: AbstractDbManager? = nil
@@ -40,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+
         //setUp container view
         if(containerView != nil) {
             containerView.isHidden = true
@@ -182,11 +180,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var numOfSection: Int = 0
         
         if dataArray.count == 0 {
-            //MARK: empty stub
             let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text = "empty_stub".localized
             noDataLabel.textColor = UIColor.black
             noDataLabel.textAlignment = .center
+            noDataLabel.numberOfLines = 3
+            noDataLabel.lineBreakMode = .byWordWrapping
             tableView.backgroundView = noDataLabel
             tableView.separatorStyle = .none
         } else {
@@ -203,7 +202,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! ScheduleCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.id) as! ScheduleCell
         
         //customize cell
         cell.layer.cornerRadius = 4.0
@@ -227,14 +226,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    //MARK: Segues
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "detSeq") {
+        if(segue.identifier == "detaildeSegue") {
             let detailedVC = segue.destination as! DetailedViewController
             let selectedRow = tableView.indexPathForSelectedRow!.row
             detailedVC.model = dataArray[selectedRow]
             
         }
-        if(segue.identifier == "setDate") {
+        if(segue.identifier == "setDateSegue") {
             let setDateVC = segue.destination as! SetDateViewController
             setDateVC.dbManager = dbManager
         }

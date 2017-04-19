@@ -5,5 +5,7 @@ class ScheduleCell: UITableViewCell {
     @IBOutlet weak var fromDate: UILabel!
     @IBOutlet weak var toDate: UILabel!
     @IBOutlet weak var price: UILabel!
+    
+    public static let id = "scheduleCell"
 
 }

@@ -70,7 +70,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Jd-iE-sRx" id="9HX-yT-ttN">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="91"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQs-V9-E23">
@@ -124,7 +124,7 @@
                                             <outlet property="info" destination="rCS-8s-Htt" id="F8t-B7-4td"/>
                                             <outlet property="price" destination="YPn-7Y-hmQ" id="5Hk-qy-Ixz"/>
                                             <outlet property="toDate" destination="RQX-6k-rKS" id="Fnw-ki-EIU"/>
-                                            <segue destination="MYu-sj-laO" kind="show" identifier="detSeq" id="7qk-gc-CZq"/>
+                                            <segue destination="MYu-sj-laO" kind="show" identifier="detailedSegue" id="7qk-gc-CZq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -155,7 +155,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Set"/>
                                 <connections>
-                                    <segue destination="Lss-ZK-Izm" kind="show" identifier="setDate" id="7W8-WF-Fnh"/>
+                                    <segue destination="Lss-ZK-Izm" kind="show" identifier="setDateSegue" id="7W8-WF-Fnh"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -314,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3F-u9-9af" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="25" y="306"/>
+            <point key="canvasLocation" x="24" y="724"/>
         </scene>
         <!--Set Date View Controller-->
         <scene sceneID="PW8-Bo-4x4">
@@ -405,7 +405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RpI-FM-I9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818.84057971014499" y="-413.31521739130437"/>
+            <point key="canvasLocation" x="1093" y="-9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0mM-kP-fFB">
