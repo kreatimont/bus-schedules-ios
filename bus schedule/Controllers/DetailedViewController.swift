@@ -19,7 +19,7 @@ class DetailedViewController: UIViewController {
         if(model != nil) {
             setUpWithModel(model: model!)
         } else {
-//            showEmptyStub()
+            showEmptyStub()
         }
     }
     
@@ -48,7 +48,7 @@ class DetailedViewController: UIViewController {
         self.toTime.isHidden = true
         
         let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
-        noDataLabel.text = "No data available"
+        noDataLabel.text = "empty_stub".localized
         noDataLabel.textColor = UIColor.black
         noDataLabel.textAlignment = .center
         self.view.addSubview(noDataLabel)

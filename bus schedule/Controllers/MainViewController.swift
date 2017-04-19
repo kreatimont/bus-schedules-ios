@@ -20,7 +20,7 @@ extension UIColor{
     }
 }
 
-class ViewController:  BaseTableViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
+class ViewController: BaseTableViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
     
     @IBOutlet weak var labelTo: UILabel!
     @IBOutlet weak var labelFrom: UILabel!
@@ -48,18 +48,7 @@ class ViewController:  BaseTableViewController, UITableViewDelegate, UITableView
             containerView.layer.borderColor = UIColor.lightGray.cgColor
         }
         
-        let panGesutureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onLabelDragged(recognizer:)))
-        
-        let tabGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onLabelClick(recognizer:)))
-
-        
-        //set onClickListener (Tab gesture)
-        labelTo.addGestureRecognizer(tabGestureRecognizer)
-        labelTo.isUserInteractionEnabled = true
-        
-        //set dragListener (Pan gesture)
-        btnSet.addGestureRecognizer(panGesutureRecognizer)
-        btnSet.isUserInteractionEnabled = true
+        initGestureRecognizers()
         
         //set current db manager
         dbManager = RealmDbManager.instance
@@ -69,6 +58,22 @@ class ViewController:  BaseTableViewController, UITableViewDelegate, UITableView
         initTableView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadTableData(_:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
+    }
+    
+    func initGestureRecognizers() {
+        let panGesutureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onLabelDragged(recognizer:)))
+        
+        let tabGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onLabelClick(recognizer:)))
+        
+        
+        //set onClickListener (Tab gesture)
+        labelTo.addGestureRecognizer(tabGestureRecognizer)
+        labelTo.isUserInteractionEnabled = true
+        
+        //set onDragListener (Pan gesture)
+        btnSet.addGestureRecognizer(panGesutureRecognizer)
+        btnSet.isUserInteractionEnabled = true
+
     }
     
     func onLabelDragged(recognizer: UIPanGestureRecognizer) {
@@ -82,12 +87,9 @@ class ViewController:  BaseTableViewController, UITableViewDelegate, UITableView
 
     func onLabelClick(recognizer: UITapGestureRecognizer) {
         let tappedLabel = recognizer.view as! UILabel
-        
         let alert = UIAlertController(title: "Label", message: "Label clicked\(tappedLabel.text)", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-
-        
     }
     
     func reloadTableData(_ notification: Notification) {
@@ -106,10 +108,8 @@ class ViewController:  BaseTableViewController, UITableViewDelegate, UITableView
         if(dataArray.count > 0) {
             tableView.addSubview(self.refreshControl)
             refreshControl.isEnabled = true
-            
             dateFrom.text = DateConverter.convertDateToString(date: (dataArray.first?.getFromDate())!)
             dateTo.text = DateConverter.convertDateToString(date: (dataArray.last?.getToDate())!)
-            
             labelFrom.isHidden = false
             labelTo.isHidden = false
         } else {
@@ -202,7 +202,6 @@ class ViewController:  BaseTableViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.id) as! ScheduleCell
         
-        //customize cell
         cell.layer.cornerRadius = 4.0
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.lightGray.cgColor
@@ -227,11 +226,10 @@ class ViewController:  BaseTableViewController, UITableViewDelegate, UITableView
     //MARK: Segues
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "detaildeSegue") {
+        if(segue.identifier == "detailedSegue") {
             let detailedVC = segue.destination as! DetailedViewController
             let selectedRow = tableView.indexPathForSelectedRow!.row
             detailedVC.model = dataArray[selectedRow]
-            
         }
         if(segue.identifier == "setDateSegue") {
             let setDateVC = segue.destination as! SetDateViewController

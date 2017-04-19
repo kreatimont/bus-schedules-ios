@@ -88,7 +88,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3S-9M-Dwm">
-                                                    <rect key="frame" x="8" y="88" width="720" height="20"/>
+                                                    <rect key="frame" x="8" y="87" width="720" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -129,7 +129,7 @@
                                 <rect key="frame" x="722" y="94" width="30" height="30"/>
                                 <state key="normal" title="Set"/>
                                 <connections>
-                                    <segue destination="n9V-hx-k6T" kind="show" identifier="setDate" id="lqb-o9-ba3"/>
+                                    <segue destination="n9V-hx-k6T" kind="show" identifier="setDateSegue" id="lqb-o9-ba3"/>
                                 </connections>
                             </button>
                         </subviews>
