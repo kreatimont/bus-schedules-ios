@@ -15,48 +15,32 @@ class ApiManager {
     let baseURL = "http://smartbus.gmoby.org/web/index.php/api"
     let modeFromDate = "?from_date=", modeToDate = "&to_date="
     
-    func loadScheduleItems(listener: ApiListener, url: String, dbManager: AbstractDbManager, vc: UIViewController) {
+    func loadScheduleItems(listener: ApiListener, url: String, dbManager: AbstractDbManager, vc: BaseViewController) {
         
         manager.get(url, parameters: nil, progress: nil,
                     success: { (operation, responseObject) in
                         
                         let responseData = responseObject as! NSDictionary
                         if(responseData["success"] != nil) {
-                            
                             dbManager.saveScheduleItemsJsonToDb(data: responseData["data"] as! NSArray)
-                            
-                            listener.success()
+                            listener.responseSuccessed()
                         } else {
                             self.handleFailureResponse(listener: listener, vc: vc)
                         }
                         
         }, failure: { (operation, error) in
-            self.handleNetworkFailure(error: error, listener: listener, vc: vc, dbManager: dbManager)
+            self.handleConnectionError(error: error, listener: listener, vc: vc)
         })
     }
     
-    func handleSuccessResponse() {
-        
+    func handleFailureResponse(listener: ApiListener, vc: BaseViewController) {
+        vc.displayResponseErrorAlert()
+        listener.responseFailed()
     }
     
-    func handleFailureResponse(listener: ApiListener, vc: UIViewController) {
-        let alert = UIAlertController(title: "error".localized, message: "response_failed".localized, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "cancel_btn".localized, style: UIAlertActionStyle.default, handler: nil))
-        vc.present(alert, animated: true, completion: nil)
-        listener.parseError()
-    }
-    
-    func handleNetworkFailure(error: Error, listener: ApiListener, vc: UIViewController, dbManager: AbstractDbManager) {
-        let alert = UIAlertController(title: "error_title".localized, message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: { action  in
-            print("Connection error in ApiManager")
-            listener.connectionError(error: error as NSError)
-        }))
-        /*alert.addAction(UIAlertAction(title: "try_again_btn".localized, style: UIAlertActionStyle.default, handler: { action in
-            ApiManager.instance.loadData(listener: listener, url: url, dbManager: dbManager, vc: vc)
-        }))*/
-        vc.present(alert, animated: true, completion: nil)
-
+    func handleConnectionError(error: Error, listener: ApiListener, vc: BaseViewController) {
+        vc.displayConnectionErrorAlert(error: error)
+        listener.connectionError(error: error)
     }
     
     func createUrl(dateFrom: Date, dateTo: Date, entity: ApiEntity) -> String {

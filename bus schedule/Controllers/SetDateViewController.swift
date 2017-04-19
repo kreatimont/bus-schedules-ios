@@ -1,7 +1,7 @@
 
 import AFNetworking
 
-class SetDateViewController: UIViewController, ApiListener {
+class SetDateViewController: BaseViewController, ApiListener {
     
     @IBOutlet weak var btnSend: UIButton!
     
@@ -56,17 +56,17 @@ class SetDateViewController: UIViewController, ApiListener {
     
     //MARK: api listener implementation 
     
-    internal func success() {
+    internal func responseSuccessed() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
         _ = self.navigationController?.popToRootViewController(animated: true)
         isLoaderStub(state: false)
     }
     
-    internal func parseError() {
+    internal func responseFailed() {
         isLoaderStub(state: false)
     }
     
-    internal func connectionError(error: NSError) {
+    internal func connectionError(error: Error) {
         isLoaderStub(state: false)
         
         btnSend.setTitle("reload_btn".localized, for: .normal)

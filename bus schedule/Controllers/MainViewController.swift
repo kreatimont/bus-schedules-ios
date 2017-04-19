@@ -15,7 +15,7 @@ extension UIColor{
     }
 }
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
+class ViewController:  BaseViewController, UITableViewDelegate, UITableViewDataSource, ApiListener {
     
     @IBOutlet weak var labelTo: UILabel!
     @IBOutlet weak var labelFrom: UILabel!
@@ -130,28 +130,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func handleRefresh(refreshControl: UIRefreshControl) {
         DispatchQueue.global(qos: .background).async {
-            
             DispatchQueue.main.async {
                 ApiManager.instance.loadScheduleItems(listener: self, url: ApiManager.instance.createUrl(
                     dateFrom: self.dataArray.first!.getFromDate(), dateTo: self.dataArray.last!.getToDate(), entity: ApiManager.ApiEntity.trips), dbManager: self.dbManager!, vc: self)
 
             }
-            
         }
     }
     
     //MARK: Api listener implementation
     
-    internal func success() {
+    internal func responseSuccessed() {
         self.updateViews()
         self.refreshControl.endRefreshing()
     }
     
-    internal func parseError() {
+    internal func responseFailed() {
         self.refreshControl.endRefreshing()
     }
     
-    internal func connectionError(error: NSError) {
+    internal func connectionError(error: Error) {
         self.refreshControl.endRefreshing()
     }
     
