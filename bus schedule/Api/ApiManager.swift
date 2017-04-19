@@ -40,16 +40,17 @@ class ApiManager {
     }
     
     func handleFailureResponse(listener: ApiListener, vc: UIViewController) {
-        let alert = UIAlertController(title: "Error", message: "Response isn`t success", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: "error".localized, message: "response_failed".localized, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "cancel_btn".localized, style: UIAlertActionStyle.default, handler: nil))
         vc.present(alert, animated: true, completion: nil)
         listener.parseError()
     }
     
     func handleNetworkFailure(error: Error, listener: ApiListener, vc: UIViewController, dbManager: AbstractDbManager) {
         let alert = UIAlertController(title: "error_title".localized, message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "cancel_btn".localized, style: UIAlertActionStyle.cancel, handler: { action  in
-            listener.success()
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: { action  in
+            print("Connection error in ApiManager")
+            listener.connectionError(error: error as NSError)
         }))
         /*alert.addAction(UIAlertAction(title: "try_again_btn".localized, style: UIAlertActionStyle.default, handler: { action in
             ApiManager.instance.loadData(listener: listener, url: url, dbManager: dbManager, vc: vc)

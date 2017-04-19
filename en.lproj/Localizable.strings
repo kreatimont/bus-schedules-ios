@@ -3,3 +3,5 @@
 "error_title" = "Load failed";
 "cancel_btn" = "Cancel";
 "try_again_btn" = "Try again";
+"response_failed" = "Failed to proccessed response.";
+"reload_btn" = "Reload";

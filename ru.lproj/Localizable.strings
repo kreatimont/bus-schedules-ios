@@ -3,3 +3,5 @@
 "error_title" = "Ошибка";
 "cancel_btn" = "Отмена";
 "try_again_btn" = "Повторить";
+"response_failed" = "Ошибка обработки ответа сервера.";
+"reload_btn" = "Релоад";

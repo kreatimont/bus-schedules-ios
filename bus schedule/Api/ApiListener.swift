@@ -2,7 +2,7 @@
 protocol ApiListener {
     
     func success()
-    func connectionError(error: NSError, url: String)
+    func connectionError(error: NSError)
     func parseError()
     
 }

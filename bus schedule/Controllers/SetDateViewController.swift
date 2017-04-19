@@ -66,8 +66,14 @@ class SetDateViewController: UIViewController, ApiListener {
         isLoaderStub(state: false)
     }
     
-    internal func connectionError(error: NSError, url: String) {
+    internal func connectionError(error: NSError) {
         isLoaderStub(state: false)
+        
+        btnSend.setTitle("reload_btn".localized, for: .normal)
+        btnSend.setTitleColor(UIColor.white, for: .normal)
+        btnSend.backgroundColor = UIColor.gray
+        btnSend.layer.cornerRadius = 4.0
+
     }
     
 }

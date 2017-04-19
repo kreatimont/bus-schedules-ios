@@ -34,8 +34,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let refreshControl = UIRefreshControl()
     
     var dbManager: AbstractDbManager? = nil
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -151,7 +151,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.refreshControl.endRefreshing()
     }
     
-    internal func connectionError(error: NSError, url: String) {
+    internal func connectionError(error: NSError) {
         self.refreshControl.endRefreshing()
     }
     
@@ -177,6 +177,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         var numOfSection: Int = 0
         
         if dataArray.count == 0 {
