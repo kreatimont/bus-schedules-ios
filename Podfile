@@ -8,6 +8,7 @@ target 'bus schedule' do
 
     pod 'RealmSwift'
     pod 'AFNetworking', '~> 3.0'
+    pod 'Google/Analytics'
 end
 
 post_install do |installer|

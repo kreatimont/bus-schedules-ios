@@ -10,5 +10,6 @@
 #define bridge_h
 
 #import <AFNetworking/AFNetworking.h>
+#import <Google/Analytics.h>
 
 #endif /* bridge_h */

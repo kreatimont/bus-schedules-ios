@@ -27,6 +27,7 @@
 		059FCFF31E9BD3A800494966 /* City+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFEF1E9BD3A800494966 /* City+CoreDataClass.swift */; };
 		059FCFF41E9BD3A800494966 /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059FCFF01E9BD3A800494966 /* City+CoreDataProperties.swift */; };
 		05AE8A271E9E4A8500DD902B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05AE8A291E9E4A8500DD902B /* Localizable.strings */; };
+		05B3384F1EBA317E00C4C7B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05B3384E1EBA317E00C4C7B9 /* GoogleService-Info.plist */; };
 		840FA6331E8942F200B8A80E /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA6321E8942F200B8A80E /* ScheduleCell.swift */; };
 		841EB8F61E841EEE007AE710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841EB8F51E841EEE007AE710 /* AppDelegate.swift */; };
 		841EB8FB1E841EEF007AE710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841EB8F91E841EEF007AE710 /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 		05AE8A281E9E4A8500DD902B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		05AE8A2A1E9E4A8A00DD902B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		05AE8A2B1E9E4FD400DD902B /* bus_schedule 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "bus_schedule 2.xcdatamodel"; sourceTree = "<group>"; };
+		05B3384E1EBA317E00C4C7B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30153C863FA09129DCCE900A /* Pods-bus schedule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bus schedule.release.xcconfig"; path = "Pods/Target Support Files/Pods-bus schedule/Pods-bus schedule.release.xcconfig"; sourceTree = "<group>"; };
 		6AE99E278E630BED643C62B7 /* Pods-bus schedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bus schedule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bus schedule/Pods-bus schedule.debug.xcconfig"; sourceTree = "<group>"; };
 		840FA6321E8942F200B8A80E /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleCell.swift; path = "bus schedule/ScheduleCell.swift"; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 		841EB8F41E841EEE007AE710 /* bus_schedule */ = {
 			isa = PBXGroup;
 			children = (
+				05B3384E1EBA317E00C4C7B9 /* GoogleService-Info.plist */,
 				84F12BCF1E854F270082FB6C /* BusSchedule-Bridging-Header.h */,
 				841EB8F51E841EEE007AE710 /* AppDelegate.swift */,
 				841EB8F91E841EEF007AE710 /* Main.storyboard */,
@@ -332,6 +335,7 @@
 				057F12981E9D0A520055E4FB /* Main_ipad.storyboard in Resources */,
 				841EB9001E841EEF007AE710 /* Assets.xcassets in Resources */,
 				841EB8FB1E841EEF007AE710 /* Main.storyboard in Resources */,
+				05B3384F1EBA317E00C4C7B9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,7 +570,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "bus schedule/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "id.bus-schedule";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -587,7 +591,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "bus schedule/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "id.bus-schedule";
 				PRODUCT_NAME = "$(TARGET_NAME)";
